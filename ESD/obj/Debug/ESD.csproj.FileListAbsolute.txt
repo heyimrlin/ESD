@@ -1,0 +1,12 @@
+d:\documents\visual studio 2013\Projects\ESD\ESD\bin\Debug\ESD.exe.config
+d:\documents\visual studio 2013\Projects\ESD\ESD\bin\Debug\ESD.exe
+d:\documents\visual studio 2013\Projects\ESD\ESD\bin\Debug\ESD.pdb
+d:\documents\visual studio 2013\Projects\ESD\ESD\obj\Debug\ESD.csprojResolveAssemblyReference.cache
+d:\documents\visual studio 2013\Projects\ESD\ESD\obj\Debug\ESD.Properties.Resources.resources
+d:\documents\visual studio 2013\Projects\ESD\ESD\obj\Debug\ESD.csproj.GenerateResource.Cache
+d:\documents\visual studio 2013\Projects\ESD\ESD\obj\Debug\ESD.exe
+d:\documents\visual studio 2013\Projects\ESD\ESD\obj\Debug\ESD.pdb
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Debug\ESD.MainForm.resources
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Debug\CSkin.dll
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Debug\CSkin.xml
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Debug\ESD.Confirm.resources
