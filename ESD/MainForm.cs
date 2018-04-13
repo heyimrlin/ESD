@@ -18,7 +18,7 @@ namespace ESD
         Thread Thread_Broadcast = null;
         TCPHandler handler = null;
         private List<Fan> FanDevices = new List<Fan>();
-        private Dictionary<string, Fan> FanSearch = new Dictionary<string, Fan>();
+        private Dictionary<string, Fan> FanList = new Dictionary<string, Fan>();
 
         public MainForm()
         {
@@ -192,21 +192,50 @@ namespace ESD
                     Parse_DeviceInfo(data);
                     break;
                 case 0x29://删除指定设备时返回的数据
+                    Parse_DeleteDevice(data);
                     break;
                 case 0x70://设备上传的数据
+                    Parse_DeviceState(data);
                     break;
             }
         }
 
         private void Parse_DeviceInfo(byte[] data)  //处理返回的设备信息
         {
+            Fan newFan = new Fan();
+
+            newFan.DeviceName = "新风机设备";
+            newFan.NetState = "开";
+
+            //短地址
             byte[] tmp = data.Skip(2).Take(2).ToArray();
             string addr_short = System.Text.Encoding.Default.GetString(tmp);
+            newFan.ShorAddress = addr_short;
+
+            //EndPoint
             string endpoint = data[4].ToString("X2");
+            newFan.EndPoint = endpoint;
+
+            //设备ID
             tmp = data.Skip(7).Take(2).ToArray();
             string device_id = System.Text.Encoding.Default.GetString(tmp);
-            tmp = data.Skip(11).Take(data[10]).ToArray();
-            string device_name = System.Text.Encoding.Default.GetString(tmp);
+            newFan.DeviceID = device_id;
+
+            if (!FanList.Keys.Contains(addr_short))
+            {
+                FanList.Add(addr_short, newFan);
+            }
+
+            Refresh_FanList();
+        }
+
+        private void Parse_DeleteDevice(byte[] data)    //处理删除指定设备时返回的数据
+        {
+
+        }
+
+        private void Parse_DeviceState(byte[] data) //处理返回的设备状态数据
+        {
 
         }
 
@@ -229,22 +258,26 @@ namespace ESD
         private void Refresh_FanList()  //刷新风机设备列表
         {
             dgv_fanList.Rows.Clear();
+            Fan fan;
 
-            for (int i = 0; i < this.FanDevices.Count; i++)
+            for (int i = 0; i < this.FanList.Count; i++)
             {
+                fan = this.FanList.ElementAt(i).Value;
+
                 DataGridViewRow row = new DataGridViewRow();
                 int index = dgv_fanList.Rows.Add(row);
-                dgv_fanList.Rows[index].Cells[0].Value = this.FanDevices.ElementAt(i).DeviceID;
-                dgv_fanList.Rows[index].Cells[1].Value = this.FanDevices.ElementAt(i).DeviceName;
-                dgv_fanList.Rows[index].Cells[2].Value = this.FanDevices.ElementAt(i).NetState;
-                dgv_fanList.Rows[index].Cells[3].Value = this.FanDevices.ElementAt(i).PressureState;
-                dgv_fanList.Rows[index].Cells[4].Value = this.FanDevices.ElementAt(i).FanState;
-                dgv_fanList.Rows[index].Cells[5].Value = this.FanDevices.ElementAt(i).BalanceVoltage;
-                dgv_fanList.Rows[index].Cells[6].Value = this.FanDevices.ElementAt(i).PressureError;
-                dgv_fanList.Rows[index].Cells[7].Value = this.FanDevices.ElementAt(i).FanError;
-                dgv_fanList.Rows[index].Cells[8].Value = this.FanDevices.ElementAt(i).ShorAddress;
-                dgv_fanList.Rows[index].Cells[9].Value = this.FanDevices.ElementAt(i).IEEEAddress;
-                dgv_fanList.Rows[index].Cells[10].Value = this.FanDevices.ElementAt(i).EndPoint;
+
+                dgv_fanList.Rows[index].Cells[0].Value = fan.DeviceID;
+                dgv_fanList.Rows[index].Cells[1].Value = fan.DeviceName;
+                dgv_fanList.Rows[index].Cells[2].Value = fan.NetState;
+                dgv_fanList.Rows[index].Cells[3].Value = fan.PressureState;
+                dgv_fanList.Rows[index].Cells[4].Value = fan.FanState;
+                dgv_fanList.Rows[index].Cells[5].Value = fan.BalanceVoltage;
+                dgv_fanList.Rows[index].Cells[6].Value = fan.PressureError;
+                dgv_fanList.Rows[index].Cells[7].Value = fan.FanError;
+                dgv_fanList.Rows[index].Cells[8].Value = fan.ShorAddress;
+                dgv_fanList.Rows[index].Cells[9].Value = fan.IEEEAddress;
+                dgv_fanList.Rows[index].Cells[10].Value = fan.EndPoint;
             }
         }
     }

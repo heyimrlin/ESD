@@ -43,7 +43,20 @@
             this.Col_SNID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_gwIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_fanList = new CCWin.SkinControl.SkinDataGridView();
+            this.Col_FanID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_FanName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_LinkState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_PressureState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_FanState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_BalVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_PressureError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_FanError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_ShortAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_IEEEAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_EndPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             this.skinPanel1 = new CCWin.SkinControl.SkinPanel();
+            this.btn_getDevices = new CCWin.SkinControl.SkinButton();
             this.btn_netPermit = new CCWin.SkinControl.SkinButton();
             this.lab_SNID = new CCWin.SkinControl.SkinLabel();
             this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
@@ -68,19 +81,6 @@
             this.Timer_RefreshIPList = new System.Windows.Forms.Timer(this.components);
             this.Timer_Search = new System.Windows.Forms.Timer(this.components);
             this.Timer_Received = new System.Windows.Forms.Timer(this.components);
-            this.Col_FanID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_FanName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_LinkState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_PressureState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_FanState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_BalVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_PressureError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_FanError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_ShortAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_IEEEAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_EndPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btn_getDevices = new CCWin.SkinControl.SkinButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_gwIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList)).BeginInit();
             this.skinPanel1.SuspendLayout();
@@ -134,7 +134,7 @@
             this.dgv_gwIP.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_gwIP.RowTemplate.Height = 23;
             this.dgv_gwIP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_gwIP.Size = new System.Drawing.Size(415, 678);
+            this.dgv_gwIP.Size = new System.Drawing.Size(415, 549);
             this.dgv_gwIP.TabIndex = 43;
             this.dgv_gwIP.TitleBack = null;
             this.dgv_gwIP.TitleBackColorBegin = System.Drawing.Color.White;
@@ -212,11 +212,96 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_fanList.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_fanList.RowTemplate.Height = 23;
-            this.dgv_fanList.Size = new System.Drawing.Size(1095, 678);
+            this.dgv_fanList.Size = new System.Drawing.Size(963, 549);
             this.dgv_fanList.TabIndex = 44;
             this.dgv_fanList.TitleBack = null;
             this.dgv_fanList.TitleBackColorBegin = System.Drawing.Color.White;
             this.dgv_fanList.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
+            // 
+            // Col_FanID
+            // 
+            this.Col_FanID.DataPropertyName = "Device_ID";
+            this.Col_FanID.HeaderText = "风机ID";
+            this.Col_FanID.Name = "Col_FanID";
+            this.Col_FanID.Visible = false;
+            this.Col_FanID.Width = 5;
+            // 
+            // Col_FanName
+            // 
+            this.Col_FanName.DataPropertyName = "Device_Name";
+            this.Col_FanName.HeaderText = "风机设备名";
+            this.Col_FanName.Name = "Col_FanName";
+            this.Col_FanName.Width = 150;
+            // 
+            // Col_LinkState
+            // 
+            this.Col_LinkState.DataPropertyName = "State_Net";
+            this.Col_LinkState.HeaderText = "联网状态";
+            this.Col_LinkState.Name = "Col_LinkState";
+            this.Col_LinkState.Width = 120;
+            // 
+            // Col_PressureState
+            // 
+            this.Col_PressureState.DataPropertyName = "State_Pressure";
+            this.Col_PressureState.HeaderText = "高压状态";
+            this.Col_PressureState.Name = "Col_PressureState";
+            this.Col_PressureState.Width = 120;
+            // 
+            // Col_FanState
+            // 
+            this.Col_FanState.DataPropertyName = "State_Fan";
+            this.Col_FanState.HeaderText = "风扇状态";
+            this.Col_FanState.Name = "Col_FanState";
+            this.Col_FanState.Width = 120;
+            // 
+            // Col_BalVoltage
+            // 
+            this.Col_BalVoltage.DataPropertyName = "Voltage_Balance";
+            this.Col_BalVoltage.HeaderText = "平衡电压";
+            this.Col_BalVoltage.Name = "Col_BalVoltage";
+            this.Col_BalVoltage.Width = 180;
+            // 
+            // Col_PressureError
+            // 
+            this.Col_PressureError.DataPropertyName = "Error_Pressure";
+            this.Col_PressureError.HeaderText = "高压异常";
+            this.Col_PressureError.Name = "Col_PressureError";
+            this.Col_PressureError.Width = 120;
+            // 
+            // Col_FanError
+            // 
+            this.Col_FanError.DataPropertyName = "Error_Fan";
+            this.Col_FanError.HeaderText = "风扇异常";
+            this.Col_FanError.Name = "Col_FanError";
+            this.Col_FanError.Width = 120;
+            // 
+            // Col_ShortAddress
+            // 
+            this.Col_ShortAddress.DataPropertyName = "Address_Short";
+            this.Col_ShortAddress.HeaderText = "短地址";
+            this.Col_ShortAddress.Name = "Col_ShortAddress";
+            this.Col_ShortAddress.Visible = false;
+            // 
+            // Col_IEEEAddress
+            // 
+            this.Col_IEEEAddress.DataPropertyName = "Address_IEEE";
+            this.Col_IEEEAddress.HeaderText = "IEEE地址";
+            this.Col_IEEEAddress.Name = "Col_IEEEAddress";
+            this.Col_IEEEAddress.Visible = false;
+            // 
+            // Col_EndPoint
+            // 
+            this.Col_EndPoint.DataPropertyName = "endpoint";
+            this.Col_EndPoint.HeaderText = "端口";
+            this.Col_EndPoint.Name = "Col_EndPoint";
+            this.Col_EndPoint.Visible = false;
+            // 
+            // Col_Refresh
+            // 
+            this.Col_Refresh.HeaderText = "操作";
+            this.Col_Refresh.Name = "Col_Refresh";
+            this.Col_Refresh.Text = "刷新";
+            this.Col_Refresh.Width = 120;
             // 
             // skinPanel1
             // 
@@ -238,8 +323,25 @@
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(1095, 53);
+            this.skinPanel1.Size = new System.Drawing.Size(963, 53);
             this.skinPanel1.TabIndex = 45;
+            // 
+            // btn_getDevices
+            // 
+            this.btn_getDevices.AutoSize = true;
+            this.btn_getDevices.BackColor = System.Drawing.Color.Transparent;
+            this.btn_getDevices.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_getDevices.DownBack = null;
+            this.btn_getDevices.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_getDevices.Location = new System.Drawing.Point(726, 19);
+            this.btn_getDevices.MouseBack = null;
+            this.btn_getDevices.Name = "btn_getDevices";
+            this.btn_getDevices.NormlBack = null;
+            this.btn_getDevices.Size = new System.Drawing.Size(84, 31);
+            this.btn_getDevices.TabIndex = 10;
+            this.btn_getDevices.Text = "获取设备";
+            this.btn_getDevices.UseVisualStyleBackColor = false;
+            this.btn_getDevices.Click += new System.EventHandler(this.btn_getDevices_Click);
             // 
             // btn_netPermit
             // 
@@ -248,7 +350,7 @@
             this.btn_netPermit.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_netPermit.DownBack = null;
             this.btn_netPermit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_netPermit.Location = new System.Drawing.Point(950, 19);
+            this.btn_netPermit.Location = new System.Drawing.Point(816, 19);
             this.btn_netPermit.MouseBack = null;
             this.btn_netPermit.Name = "btn_netPermit";
             this.btn_netPermit.NormlBack = null;
@@ -292,7 +394,7 @@
             this.btn_disconncet.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_disconncet.DownBack = null;
             this.btn_disconncet.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_disconncet.Location = new System.Drawing.Point(1040, 19);
+            this.btn_disconncet.Location = new System.Drawing.Point(906, 19);
             this.btn_disconncet.MouseBack = null;
             this.btn_disconncet.Name = "btn_disconncet";
             this.btn_disconncet.NormlBack = null;
@@ -430,7 +532,7 @@
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
-            this.menu.Size = new System.Drawing.Size(1539, 28);
+            this.menu.Size = new System.Drawing.Size(1400, 28);
             this.menu.SkinAllColor = true;
             this.menu.TabIndex = 47;
             this.menu.Text = "skinMenuStrip1";
@@ -480,9 +582,9 @@
             this.StatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sb_tips0,
             this.sb_tips1});
-            this.StatusBar.Location = new System.Drawing.Point(0, 768);
+            this.StatusBar.Location = new System.Drawing.Point(0, 639);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(1539, 22);
+            this.StatusBar.Size = new System.Drawing.Size(1400, 22);
             this.StatusBar.TabIndex = 70;
             // 
             // sb_tips0
@@ -521,114 +623,12 @@
             // 
             this.Timer_Received.Tick += new System.EventHandler(this.Timer_Received_Tick);
             // 
-            // Col_FanID
-            // 
-            this.Col_FanID.DataPropertyName = "Device_ID";
-            this.Col_FanID.HeaderText = "风机ID";
-            this.Col_FanID.Name = "Col_FanID";
-            this.Col_FanID.Visible = false;
-            this.Col_FanID.Width = 5;
-            // 
-            // Col_FanName
-            // 
-            this.Col_FanName.DataPropertyName = "Device_Name";
-            this.Col_FanName.HeaderText = "风机设备名";
-            this.Col_FanName.Name = "Col_FanName";
-            this.Col_FanName.Width = 150;
-            // 
-            // Col_LinkState
-            // 
-            this.Col_LinkState.DataPropertyName = "State_Net";
-            this.Col_LinkState.HeaderText = "联网状态";
-            this.Col_LinkState.Name = "Col_LinkState";
-            this.Col_LinkState.Width = 120;
-            // 
-            // Col_PressureState
-            // 
-            this.Col_PressureState.DataPropertyName = "State_Pressure";
-            this.Col_PressureState.HeaderText = "高压状态";
-            this.Col_PressureState.Name = "Col_PressureState";
-            this.Col_PressureState.Width = 120;
-            // 
-            // Col_FanState
-            // 
-            this.Col_FanState.DataPropertyName = "State_Fan";
-            this.Col_FanState.HeaderText = "风扇状态";
-            this.Col_FanState.Name = "Col_FanState";
-            this.Col_FanState.Width = 120;
-            // 
-            // Col_BalVoltage
-            // 
-            this.Col_BalVoltage.DataPropertyName = "Voltage_Balance";
-            this.Col_BalVoltage.HeaderText = "平衡电压";
-            this.Col_BalVoltage.Name = "Col_BalVoltage";
-            this.Col_BalVoltage.Width = 180;
-            // 
-            // Col_PressureError
-            // 
-            this.Col_PressureError.DataPropertyName = "Error_Pressure";
-            this.Col_PressureError.HeaderText = "高压异常";
-            this.Col_PressureError.Name = "Col_PressureError";
-            this.Col_PressureError.Width = 120;
-            // 
-            // Col_FanError
-            // 
-            this.Col_FanError.DataPropertyName = "Error_Fan";
-            this.Col_FanError.HeaderText = "风扇异常";
-            this.Col_FanError.Name = "Col_FanError";
-            this.Col_FanError.Width = 120;
-            // 
-            // Col_ShortAddress
-            // 
-            this.Col_ShortAddress.DataPropertyName = "Address_Short";
-            this.Col_ShortAddress.HeaderText = "短地址";
-            this.Col_ShortAddress.Name = "Col_ShortAddress";
-            this.Col_ShortAddress.Visible = false;
-            // 
-            // Col_IEEEAddress
-            // 
-            this.Col_IEEEAddress.DataPropertyName = "Address_IEEE";
-            this.Col_IEEEAddress.HeaderText = "IEEE地址";
-            this.Col_IEEEAddress.Name = "Col_IEEEAddress";
-            this.Col_IEEEAddress.Visible = false;
-            // 
-            // Col_EndPoint
-            // 
-            this.Col_EndPoint.DataPropertyName = "endpoint";
-            this.Col_EndPoint.HeaderText = "端口";
-            this.Col_EndPoint.Name = "Col_EndPoint";
-            this.Col_EndPoint.Visible = false;
-            // 
-            // Col_Refresh
-            // 
-            this.Col_Refresh.HeaderText = "操作";
-            this.Col_Refresh.Name = "Col_Refresh";
-            this.Col_Refresh.Text = "刷新";
-            this.Col_Refresh.Width = 120;
-            // 
-            // btn_getDevices
-            // 
-            this.btn_getDevices.AutoSize = true;
-            this.btn_getDevices.BackColor = System.Drawing.Color.Transparent;
-            this.btn_getDevices.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.btn_getDevices.DownBack = null;
-            this.btn_getDevices.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_getDevices.Location = new System.Drawing.Point(860, 19);
-            this.btn_getDevices.MouseBack = null;
-            this.btn_getDevices.Name = "btn_getDevices";
-            this.btn_getDevices.NormlBack = null;
-            this.btn_getDevices.Size = new System.Drawing.Size(84, 31);
-            this.btn_getDevices.TabIndex = 10;
-            this.btn_getDevices.Text = "获取设备";
-            this.btn_getDevices.UseVisualStyleBackColor = false;
-            this.btn_getDevices.Click += new System.EventHandler(this.btn_getDevices_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(1539, 790);
+            this.ClientSize = new System.Drawing.Size(1400, 661);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.skinLabel2);
             this.Controls.Add(this.skinPanel1);

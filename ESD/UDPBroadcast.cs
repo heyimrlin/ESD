@@ -14,6 +14,8 @@ namespace ESD
         public static Dictionary<string, string> gw_info = new Dictionary<string, string>();
         protected Thread receiveThread;
 
+        private UdpClient client = new UdpClient(new IPEndPoint(IPAddress.Any, 9090));
+
         public static string ReceiveData = "msg";
         public static string Handshake = "握手：发送 0；接收 0 ";
         private int send = 0;
@@ -23,8 +25,8 @@ namespace ESD
         {
             try
             {
-                UdpClient UDPSend = new UdpClient(new IPEndPoint(IPAddress.Any, 0));
-                IPEndPoint endpoint = new IPEndPoint(IPAddress.Broadcast, 9090);
+                //UdpClient UDPSend = new UdpClient(new IPEndPoint(IPAddress.Any, 0));
+                IPEndPoint endpoint = new IPEndPoint(IPAddress.Parse(Utils.GetBroadcast()), 9090);
 
                 byte[] buf = System.Text.Encoding.Default.GetBytes("GETIP\r\n");
 
@@ -34,7 +36,7 @@ namespace ESD
 
                 while (true)
                 {
-                    UDPSend.Send(buf, buf.Length, endpoint);
+                    client.Send(buf, buf.Length, endpoint);
                     send++;
                     Handshake = "握手：发送 " + send + "；接收 " + receive;
                     Thread.Sleep(5000);
@@ -50,19 +52,24 @@ namespace ESD
         {
             try
             {
-                UdpClient UDPReceive = new UdpClient(new IPEndPoint(IPAddress.Any, 9090));
+                //UdpClient UDPReceive = new UdpClient(new IPEndPoint(IPAddress.Any, 9090));
                 IPEndPoint endpoint = new IPEndPoint(IPAddress.Any, 0);
 
                 while (true)
                 {
-                    byte[] buf = UDPReceive.Receive(ref endpoint);
+                    byte[] buf = client.Receive(ref endpoint);
                     string IP = endpoint.Address.ToString();
                     string recData = System.Text.Encoding.Default.GetString(buf);
 
                     //处理广播接收数据，获取在线网关的ip地址
-                    if (recData.Contains("SN:"))
+                    if (recData.Contains("SN"))
                     {
-                        gw_info.Add(recData.Replace("SN:", ""), IP);
+                        byte[] tmp = buf.Skip(buf.Length - 10).Take(8).ToArray();
+                        string snid = System.Text.Encoding.Default.GetString(tmp);
+                        if (!gw_info.Keys.Contains(snid))
+                        {
+                            gw_info.Add(snid, IP);
+                        }
                         receive++;
                         Handshake = "握手：发送 " + send + "；接收 " + receive;
                     }

@@ -1,0 +1,11 @@
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Release\ESD.exe.config
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Release\ESD.exe
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Release\ESD.pdb
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Release\CSkin.dll
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Release\CSkin.xml
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.Confirm.resources
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.MainForm.resources
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.Properties.Resources.resources
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.csproj.GenerateResource.Cache
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.exe
+D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.pdb

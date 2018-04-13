@@ -33,9 +33,8 @@ namespace ESD
             {
                 if (Convert.ToBoolean(nic["ipEnabled"]) == true)
                 {
-                    ip = System.Text.Encoding.Default.GetBytes((nic["IPAddress"] as String[])[0]);
-                    ip_subnet = System.Text.Encoding.Default.GetBytes((nic["IPSubnet"] as String[])[0]);
-
+                    ip = IPAddress.Parse((nic["IPAddress"] as String[])[0]).GetAddressBytes();
+                    ip_subnet = IPAddress.Parse((nic["IPSubnet"] as String[])[0]).GetAddressBytes();
                 }
             }
 

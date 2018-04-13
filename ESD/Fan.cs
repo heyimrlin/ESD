@@ -85,6 +85,11 @@ namespace ESD
             set { endpoint = value; }
         }
 
+        public Fan()
+        {
+            
+        }
+
         public Fan(string id, string name, string net, string pressure, string fan, string bal_voltage, string err_pressure, 
                 string err_fan, string addr_short, string addr_ieee, string endpoint)
         {
