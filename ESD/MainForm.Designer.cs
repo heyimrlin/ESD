@@ -212,7 +212,7 @@
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_fanList.RowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_fanList.RowTemplate.Height = 23;
-            this.dgv_fanList.Size = new System.Drawing.Size(963, 549);
+            this.dgv_fanList.Size = new System.Drawing.Size(861, 549);
             this.dgv_fanList.TabIndex = 44;
             this.dgv_fanList.TitleBack = null;
             this.dgv_fanList.TitleBackColorBegin = System.Drawing.Color.White;
@@ -323,7 +323,7 @@
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
             this.skinPanel1.NormlBack = null;
-            this.skinPanel1.Size = new System.Drawing.Size(963, 53);
+            this.skinPanel1.Size = new System.Drawing.Size(861, 53);
             this.skinPanel1.TabIndex = 45;
             // 
             // btn_getDevices
@@ -333,7 +333,7 @@
             this.btn_getDevices.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_getDevices.DownBack = null;
             this.btn_getDevices.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_getDevices.Location = new System.Drawing.Point(726, 19);
+            this.btn_getDevices.Location = new System.Drawing.Point(624, 19);
             this.btn_getDevices.MouseBack = null;
             this.btn_getDevices.Name = "btn_getDevices";
             this.btn_getDevices.NormlBack = null;
@@ -350,7 +350,7 @@
             this.btn_netPermit.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_netPermit.DownBack = null;
             this.btn_netPermit.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_netPermit.Location = new System.Drawing.Point(816, 19);
+            this.btn_netPermit.Location = new System.Drawing.Point(714, 19);
             this.btn_netPermit.MouseBack = null;
             this.btn_netPermit.Name = "btn_netPermit";
             this.btn_netPermit.NormlBack = null;
@@ -367,7 +367,7 @@
             this.lab_SNID.BorderColor = System.Drawing.Color.White;
             this.lab_SNID.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lab_SNID.ForeColor = System.Drawing.Color.Blue;
-            this.lab_SNID.Location = new System.Drawing.Point(346, 24);
+            this.lab_SNID.Location = new System.Drawing.Point(67, 3);
             this.lab_SNID.Name = "lab_SNID";
             this.lab_SNID.Size = new System.Drawing.Size(82, 21);
             this.lab_SNID.TabIndex = 8;
@@ -380,7 +380,7 @@
             this.skinLabel5.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel5.BorderColor = System.Drawing.Color.White;
             this.skinLabel5.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel5.Location = new System.Drawing.Point(283, 24);
+            this.skinLabel5.Location = new System.Drawing.Point(4, 3);
             this.skinLabel5.Name = "skinLabel5";
             this.skinLabel5.Size = new System.Drawing.Size(65, 21);
             this.skinLabel5.TabIndex = 7;
@@ -394,7 +394,7 @@
             this.btn_disconncet.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_disconncet.DownBack = null;
             this.btn_disconncet.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_disconncet.Location = new System.Drawing.Point(906, 19);
+            this.btn_disconncet.Location = new System.Drawing.Point(804, 19);
             this.btn_disconncet.MouseBack = null;
             this.btn_disconncet.Name = "btn_disconncet";
             this.btn_disconncet.NormlBack = null;
@@ -411,7 +411,7 @@
             this.lab_Fans.BorderColor = System.Drawing.Color.White;
             this.lab_Fans.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lab_Fans.ForeColor = System.Drawing.Color.Blue;
-            this.lab_Fans.Location = new System.Drawing.Point(543, 24);
+            this.lab_Fans.Location = new System.Drawing.Point(441, 24);
             this.lab_Fans.Name = "lab_Fans";
             this.lab_Fans.Size = new System.Drawing.Size(37, 21);
             this.lab_Fans.TabIndex = 5;
@@ -423,7 +423,7 @@
             this.skinLabel6.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel6.BorderColor = System.Drawing.Color.White;
             this.skinLabel6.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel6.Location = new System.Drawing.Point(477, 24);
+            this.skinLabel6.Location = new System.Drawing.Point(375, 24);
             this.skinLabel6.Name = "skinLabel6";
             this.skinLabel6.Size = new System.Drawing.Size(74, 21);
             this.skinLabel6.TabIndex = 4;
@@ -436,7 +436,7 @@
             this.lab_Connected.BorderColor = System.Drawing.Color.White;
             this.lab_Connected.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lab_Connected.ForeColor = System.Drawing.Color.Red;
-            this.lab_Connected.Location = new System.Drawing.Point(645, 24);
+            this.lab_Connected.Location = new System.Drawing.Point(543, 24);
             this.lab_Connected.Name = "lab_Connected";
             this.lab_Connected.Size = new System.Drawing.Size(58, 21);
             this.lab_Connected.TabIndex = 3;
@@ -448,7 +448,7 @@
             this.skinLabel4.BackColor = System.Drawing.Color.Transparent;
             this.skinLabel4.BorderColor = System.Drawing.Color.White;
             this.skinLabel4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel4.Location = new System.Drawing.Point(595, 24);
+            this.skinLabel4.Location = new System.Drawing.Point(493, 24);
             this.skinLabel4.Name = "skinLabel4";
             this.skinLabel4.Size = new System.Drawing.Size(58, 21);
             this.skinLabel4.TabIndex = 2;
@@ -532,7 +532,7 @@
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
             this.menu.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
-            this.menu.Size = new System.Drawing.Size(1400, 28);
+            this.menu.Size = new System.Drawing.Size(1300, 28);
             this.menu.SkinAllColor = true;
             this.menu.TabIndex = 47;
             this.menu.Text = "skinMenuStrip1";
@@ -584,7 +584,7 @@
             this.sb_tips1});
             this.StatusBar.Location = new System.Drawing.Point(0, 639);
             this.StatusBar.Name = "StatusBar";
-            this.StatusBar.Size = new System.Drawing.Size(1400, 22);
+            this.StatusBar.Size = new System.Drawing.Size(1300, 22);
             this.StatusBar.TabIndex = 70;
             // 
             // sb_tips0
@@ -628,7 +628,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.ClientSize = new System.Drawing.Size(1400, 661);
+            this.ClientSize = new System.Drawing.Size(1300, 661);
             this.Controls.Add(this.StatusBar);
             this.Controls.Add(this.skinLabel2);
             this.Controls.Add(this.skinPanel1);
