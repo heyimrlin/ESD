@@ -56,6 +56,12 @@
       <DependentUpon>Confirm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataSent.cs" />
+    <Compile Include="DeviceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeviceForm.Designer.cs">
+      <DependentUpon>DeviceForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fan.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -70,6 +76,9 @@
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Confirm.resx">
       <DependentUpon>Confirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeviceForm.resx">
+      <DependentUpon>DeviceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

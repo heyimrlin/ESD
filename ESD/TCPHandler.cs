@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace ESD
 {
-    class TCPHandler
+    public class TCPHandler
     {
         private bool success = false;
         private TcpClient tcpclient = null;

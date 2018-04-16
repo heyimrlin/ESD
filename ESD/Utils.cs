@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ESD
 {
-    class Utils
+    public class Utils
     {
         public static byte[] HexstrToByte(string data)  //十六进制字符串转字节数组
         {

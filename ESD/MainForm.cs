@@ -16,9 +16,12 @@ namespace ESD
     {
         UDPBroadcast broadcast = null;
         Thread Thread_Broadcast = null;
-        TCPHandler handler = null;
+        public static TCPHandler handler = null;
         private List<Fan> FanDevices = new List<Fan>();
         private Dictionary<string, Fan> FanList = new Dictionary<string, Fan>();
+
+        Form device = new DeviceForm();
+        public static bool FormState = false;
 
         public MainForm()
         {
@@ -166,6 +169,9 @@ namespace ESD
             lab_Connected.Text = "未连接";
             dgv_gwIP.Enabled = true;
             Timer_Received.Enabled = false;
+
+            this.FanList.Clear();
+            Refresh_FanList();
         }
 
         private void dgv_gwIP_MouseEnter(object sender, EventArgs e)    //设置dgv_gwIP提示信息
@@ -202,6 +208,12 @@ namespace ESD
 
         private void Parse_DeviceInfo(byte[] data)  //处理返回的设备信息
         {
+            if (data.Length < 30)
+            {
+                TCPHandler.State = "获取设备失败！";
+                return;
+            }
+
             Fan newFan = new Fan();
 
             newFan.DeviceName = "新风机设备";
@@ -213,7 +225,7 @@ namespace ESD
             newFan.ShorAddress = addr_short;
 
             //EndPoint
-            string endpoint = data[4].ToString("X2");
+            string endpoint = Convert.ToString(data[4]);
             newFan.EndPoint = endpoint;
 
             //设备ID
@@ -226,17 +238,123 @@ namespace ESD
                 FanList.Add(addr_short, newFan);
             }
 
+            TCPHandler.State = "获取设备成功！";
             Refresh_FanList();
         }
 
         private void Parse_DeleteDevice(byte[] data)    //处理删除指定设备时返回的数据
         {
-
+            if (data[3] == 0x95)
+            {
+                TCPHandler.State = "删除设备成功！";
+            }
+            else
+            {
+                TCPHandler.State = "删除设备失败！";
+            }
         }
 
         private void Parse_DeviceState(byte[] data) //处理返回的设备状态数据
         {
+            if (data.Length != data[1] + 2)
+            {
+                TCPHandler.State = "更新设备状态失败！";
+                return;
+            }
 
+            //短地址
+            byte[] tmp = data.Skip(2).Take(2).ToArray();
+            string addr_short = System.Text.Encoding.Default.GetString(tmp);
+            
+            //EndPoint
+            string endpoint = Convert.ToString(data[4]);
+
+            //RealData
+            byte[] data_real;
+            if (data[12] == 0x68 && data[15] == 0x80 && data[16] == 0x2F)   //设备状态数据
+            {
+                data_real = data.Skip(17).Take(13).ToArray();
+
+                string ver_hard = "" + data[0];
+                string ver_soft = "" + data[1];
+
+                tmp = data_real.Skip(3).Take(2).ToArray();
+                string work_time = ""+BitConverter.ToInt16(tmp, 0);
+
+                string work_mode = (data_real[9]&1)==1?"自动":"手动";
+                string fan_state = (data_real[9] & 64) == 64 ? "打开" : "关闭";
+                string pressure_state = (data_real[9] & 128) == 128 ? "打开" : "关闭";
+
+                tmp = data_real.Skip(10).Take(2).ToArray();
+                string work_voltage = "" + BitConverter.ToInt16(tmp, 0);
+
+                string fan_speed = "" + data[12];
+
+                if (FanList.Keys.Contains(addr_short))
+                {
+                    Fan fan = new Fan();
+                    FanList.TryGetValue(addr_short, out fan);
+
+                    fan.FanState = fan_state;
+                    fan.PressureState = pressure_state;
+                    fan.BalanceVoltage = work_voltage;
+
+                    FanList[addr_short] = fan;
+
+                    Refresh_FanList();
+                }
+
+                if (FormState==true && addr_short == DeviceForm.addr_Short)
+                {
+                    DeviceForm.hard_Version = ver_hard;
+                    DeviceForm.soft_Version = ver_soft;
+                    DeviceForm.work_Time = work_time;
+                    DeviceForm.bal_Voltage = work_voltage;
+                    DeviceForm.fan_Speed = fan_speed;
+                    DeviceForm.work_Mode = work_mode;
+                    DeviceForm.fan_State = fan_state;
+                    DeviceForm.pressure_State = pressure_state;
+                }
+            }
+            else if (data[12] == 0x68 && data[15] == 0xC8 && data[16] == 0x00)  //设备异常状态数据
+            {
+                string device_voltage = (data[17] & 1) ==1? "异常" : "正常";
+                string device_electric = (data[17] & 2) == 2 ? "异常" : "正常";
+                string balance_voltage = (data[17] & 4) == 4 ? "异常" : "正常";
+                string fan_error = (data[17] & 8) == 8 ? "异常" : "正常";
+
+                if (FanList.Keys.Contains(addr_short))
+                {
+                    Fan fan = new Fan();
+                    FanList.TryGetValue(addr_short, out fan);
+
+                    fan.PressureError = device_voltage;
+                    fan.FanError = fan_error;
+
+                    FanList[addr_short] = fan;
+
+                    Refresh_FanList();
+                }
+
+                if (FormState == true && addr_short == DeviceForm.addr_Short)
+                {
+                    DeviceForm.error_Voltage = device_voltage;
+                    DeviceForm.error_Electric = device_electric;
+                    DeviceForm.error_Bal = balance_voltage;
+                    DeviceForm.error_Fan = fan_error;
+                }
+
+                if (handler != null && handler.isConnected())   //回复接收到异常上报数据
+                {
+                    handler.SendData(DataSent.GetSendData(lab_SNID.Text, addr_short, endpoint, 0x30));
+                }
+            }
+            else
+            {
+                return;
+            }
+            
+            TCPHandler.State = "更新设备状态成功！";
         }
 
         private void btn_netPermit_Click(object sender, EventArgs e)    //允许入网
@@ -278,6 +396,52 @@ namespace ESD
                 dgv_fanList.Rows[index].Cells[8].Value = fan.ShorAddress;
                 dgv_fanList.Rows[index].Cells[9].Value = fan.IEEEAddress;
                 dgv_fanList.Rows[index].Cells[10].Value = fan.EndPoint;
+            }
+
+            lab_Fans.Text = "" + dgv_fanList.RowCount;
+        }
+
+        private void cMenu_FanList_Opened(object sender, EventArgs e)   //弹出菜单初始化设置
+        {
+            if (dgv_fanList.RowCount > 0)
+            {
+                cMenu_Delete.Enabled = true;
+                cMenu_Check.Enabled = true;
+            }
+            else
+            {
+                cMenu_Delete.Enabled = false;
+                cMenu_Check.Enabled = false;
+            }
+        }
+
+        private void cMenu_Delete_Click(object sender, EventArgs e) //删除指定设备
+        {
+            if (dgv_fanList.RowCount > 0)
+            {
+                string addr_Short = dgv_fanList.CurrentRow.Cells[8].Value.ToString();
+                string addr_IEEE = dgv_fanList.CurrentRow.Cells[9].Value.ToString();
+                string endpoint = dgv_fanList.CurrentRow.Cells[10].Value.ToString();
+
+                if (handler != null && handler.isConnected())
+                {
+                    handler.SendData(DataSent.DeleteDevice(lab_SNID.Text,addr_Short,addr_IEEE,endpoint));
+                }
+            }
+        }
+
+        private void cMenu_Check_Click(object sender, EventArgs e)  //查看设备状态
+        {
+            if (dgv_fanList.RowCount > 0)
+            {
+                DeviceForm.gw_SN = lab_SNID.Text;
+                DeviceForm.addr_Short = dgv_fanList.CurrentRow.Cells[8].Value.ToString();
+                DeviceForm.endpoint = dgv_fanList.CurrentRow.Cells[10].Value.ToString();
+                DeviceForm.dev_Name = dgv_fanList.CurrentRow.Cells[1].Value.ToString();
+
+                FormState = true;
+
+                device.ShowDialog();
             }
         }
     }
