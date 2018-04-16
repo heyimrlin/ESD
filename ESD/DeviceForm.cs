@@ -158,6 +158,23 @@ namespace ESD
         private void DeviceForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             MainForm.FormState = false;
+
+            lab_devName.Text = "";
+            lab_hardVersion.Text = "";
+            lab_softVersion.Text = "";
+            lab_workTime.Text = "";
+            lab_balVoltage.Text = "";
+            lab_speed.Text = "";
+
+            btn_manual.Checked = true;
+            btn_fanoff.Checked = true;
+            btn_pressureoff.Checked = true;
+            btn_volnor.Checked = true;
+            btn_elecnor.Checked = true;
+            btn_balnor.Checked = true;
+            btn_fannor.Checked = true;
+
+            num_speed.Value = 1;
         }
     }
 }

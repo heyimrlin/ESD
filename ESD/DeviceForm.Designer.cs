@@ -153,7 +153,6 @@
             // 
             this.btn_pressureoff.AutoSize = true;
             this.btn_pressureoff.BackColor = System.Drawing.Color.Transparent;
-            this.btn_pressureoff.Checked = true;
             this.btn_pressureoff.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_pressureoff.DownBack = null;
             this.btn_pressureoff.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -166,7 +165,6 @@
             this.btn_pressureoff.SelectedNormlBack = null;
             this.btn_pressureoff.Size = new System.Drawing.Size(55, 24);
             this.btn_pressureoff.TabIndex = 2;
-            this.btn_pressureoff.TabStop = true;
             this.btn_pressureoff.Text = "关闭";
             this.btn_pressureoff.UseVisualStyleBackColor = false;
             // 
@@ -221,7 +219,6 @@
             // 
             this.btn_fanoff.AutoSize = true;
             this.btn_fanoff.BackColor = System.Drawing.Color.Transparent;
-            this.btn_fanoff.Checked = true;
             this.btn_fanoff.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_fanoff.DownBack = null;
             this.btn_fanoff.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -234,7 +231,6 @@
             this.btn_fanoff.SelectedNormlBack = null;
             this.btn_fanoff.Size = new System.Drawing.Size(55, 24);
             this.btn_fanoff.TabIndex = 2;
-            this.btn_fanoff.TabStop = true;
             this.btn_fanoff.Text = "关闭";
             this.btn_fanoff.UseVisualStyleBackColor = false;
             // 
@@ -289,7 +285,6 @@
             // 
             this.btn_manual.AutoSize = true;
             this.btn_manual.BackColor = System.Drawing.Color.Transparent;
-            this.btn_manual.Checked = true;
             this.btn_manual.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_manual.DownBack = null;
             this.btn_manual.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -302,7 +297,6 @@
             this.btn_manual.SelectedNormlBack = null;
             this.btn_manual.Size = new System.Drawing.Size(55, 24);
             this.btn_manual.TabIndex = 2;
-            this.btn_manual.TabStop = true;
             this.btn_manual.Text = "手动";
             this.btn_manual.UseVisualStyleBackColor = false;
             // 

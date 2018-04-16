@@ -25,7 +25,8 @@ namespace ESD
             string data_sent = "1500" + gw_SN.Substring(6, 2) + gw_SN.Substring(4, 2) + gw_SN.Substring(2, 2) + gw_SN.Substring(0, 2) + "FE950C02";
             byte[] head = Utils.HexstrToByte(data_sent);
             byte[] aShort = System.Text.Encoding.Default.GetBytes(addr_Short);
-            byte[] aIEEE = System.Text.Encoding.Default.GetBytes(addr_IEEE);
+            //byte[] aIEEE = System.Text.Encoding.Default.GetBytes(addr_IEEE);
+            byte[] aIEEE = Utils.HexstrToByte(addr_IEEE);
             byte[] ePoint = System.Text.Encoding.Default.GetBytes(endpoint);
 
             return head.Concat(aShort).Concat(aIEEE).Concat(ePoint).ToArray();
@@ -46,37 +47,37 @@ namespace ESD
                 case 0x00://获取状态数据
                     tmp = "1500" + gw_SN + "FEA70C";
                     data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-                    tmp = "030601680500082F3C";
+                    tmp = "030600680600082F3D";
                     data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
                     break;
                 case 0x10://打开离子风机
                     tmp = "1500" + gw_SN + "FEA70C";
                     data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-                    tmp = "030601680500080431";
+                    tmp = "030600680600280432";
                     data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
                     break;
                 case 0x11://关闭离子风机
                     tmp = "1500" + gw_SN + "FEA70C";
                     data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-                    tmp = "030601680500280330";
+                    tmp = "030600680600280331";
                     data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
                     break;
                 case 0x20://切换为自动状态
                     tmp = "1600" + gw_SN + "FEA70D";
                     data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-                    tmp = "03070168060028070136";
+                    tmp = "03070068070028070137";
                     data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
                     break;
                 case 0x21://切换为手动状态
                     tmp = "1600" + gw_SN + "FEA70D";
                     data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-                    tmp = "03070168060028070036";
+                    tmp = "03070068070028070036";
                     data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
                     break;
                 case 0x30://回复接收到异常上报数据
                     tmp = "1600" + gw_SN + "FEA70D";
                     data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-                    tmp = "03070168060000000036";
+                    tmp = "03070068070000000007";
                     data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
                     break;
             }
@@ -96,7 +97,7 @@ namespace ESD
 
             tmp = "1600" + gw_SN + "FEA70D";
             data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
-            tmp = "0307016806002806"+data.ToString("X2")+"36";
+            tmp = "0307006807002806"+data.ToString("X2")+(data+35).ToString("X2");
             data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
 
             return data_sent;

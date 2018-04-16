@@ -225,13 +225,22 @@ namespace ESD
             newFan.ShorAddress = addr_short;
 
             //EndPoint
-            string endpoint = Convert.ToString(data[4]);
+            tmp = data.Skip(4).Take(1).ToArray();
+            string endpoint = System.Text.Encoding.Default.GetString(tmp);
             newFan.EndPoint = endpoint;
 
             //设备ID
             tmp = data.Skip(7).Take(2).ToArray();
-            string device_id = System.Text.Encoding.Default.GetString(tmp);
+            //string device_id = System.Text.Encoding.Default.GetString(tmp);
+            string device_id = tmp[1].ToString("X2") + tmp[0].ToString("X2");
             newFan.DeviceID = device_id;
+
+            //8字节IEEE地址
+            tmp = data.Skip(11 + data[10] + 1).Take(8).ToArray();
+            //string addr_ieee = System.Text.Encoding.Default.GetString(tmp);
+            string addr_ieee = tmp[0].ToString("X2") + tmp[1].ToString("X2") + tmp[2].ToString("X2") + tmp[3].ToString("X2") +
+                tmp[4].ToString("X2") + tmp[5].ToString("X2") + tmp[6].ToString("X2") + tmp[7].ToString("X2");
+            newFan.IEEEAddress = addr_ieee;
 
             if (!FanList.Keys.Contains(addr_short))
             {
@@ -267,7 +276,8 @@ namespace ESD
             string addr_short = System.Text.Encoding.Default.GetString(tmp);
             
             //EndPoint
-            string endpoint = Convert.ToString(data[4]);
+            tmp = data.Skip(4).Take(1).ToArray();
+            string endpoint = System.Text.Encoding.Default.GetString(tmp);
 
             //RealData
             byte[] data_real;
@@ -275,8 +285,8 @@ namespace ESD
             {
                 data_real = data.Skip(17).Take(13).ToArray();
 
-                string ver_hard = "" + data[0];
-                string ver_soft = "" + data[1];
+                string ver_hard = "" + data_real[0];
+                string ver_soft = "" + data_real[1];
 
                 tmp = data_real.Skip(3).Take(2).ToArray();
                 string work_time = ""+BitConverter.ToInt16(tmp, 0);
@@ -288,7 +298,7 @@ namespace ESD
                 tmp = data_real.Skip(10).Take(2).ToArray();
                 string work_voltage = "" + BitConverter.ToInt16(tmp, 0);
 
-                string fan_speed = "" + data[12];
+                string fan_speed = "" + data_real[12];
 
                 if (FanList.Keys.Contains(addr_short))
                 {
@@ -420,7 +430,11 @@ namespace ESD
             if (dgv_fanList.RowCount > 0)
             {
                 string addr_Short = dgv_fanList.CurrentRow.Cells[8].Value.ToString();
-                string addr_IEEE = dgv_fanList.CurrentRow.Cells[9].Value.ToString();
+                string addr_IEEE="";
+                if(dgv_fanList.CurrentRow.Cells[9].Value!=null)
+                {
+                    addr_IEEE = dgv_fanList.CurrentRow.Cells[9].Value.ToString();
+                }
                 string endpoint = dgv_fanList.CurrentRow.Cells[10].Value.ToString();
 
                 if (handler != null && handler.isConnected())
