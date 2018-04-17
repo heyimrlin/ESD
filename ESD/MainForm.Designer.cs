@@ -83,7 +83,6 @@
             this.Col_ShortAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_IEEEAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_EndPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_Refresh = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_gwIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList)).BeginInit();
             this.cMenu_FanList.SuspendLayout();
@@ -191,8 +190,7 @@
             this.Col_FanError,
             this.Col_ShortAddress,
             this.Col_IEEEAddress,
-            this.Col_EndPoint,
-            this.Col_Refresh});
+            this.Col_EndPoint});
             this.dgv_fanList.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_fanList.ContextMenuStrip = this.cMenu_FanList;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -596,6 +594,7 @@
             this.Col_FanID.HeaderText = "风机ID";
             this.Col_FanID.Name = "Col_FanID";
             this.Col_FanID.ReadOnly = true;
+            this.Col_FanID.Visible = false;
             // 
             // Col_FanName
             // 
@@ -632,7 +631,7 @@
             // Col_BalVoltage
             // 
             this.Col_BalVoltage.DataPropertyName = "Voltage_Balance";
-            this.Col_BalVoltage.HeaderText = "平衡电压";
+            this.Col_BalVoltage.HeaderText = "平衡电压(mV)";
             this.Col_BalVoltage.Name = "Col_BalVoltage";
             this.Col_BalVoltage.ReadOnly = true;
             this.Col_BalVoltage.Width = 180;
@@ -676,14 +675,6 @@
             this.Col_EndPoint.Name = "Col_EndPoint";
             this.Col_EndPoint.ReadOnly = true;
             this.Col_EndPoint.Visible = false;
-            // 
-            // Col_Refresh
-            // 
-            this.Col_Refresh.HeaderText = "操作";
-            this.Col_Refresh.Name = "Col_Refresh";
-            this.Col_Refresh.ReadOnly = true;
-            this.Col_Refresh.Text = "刷新";
-            this.Col_Refresh.Width = 120;
             // 
             // MainForm
             // 
@@ -766,7 +757,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_ShortAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_IEEEAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_EndPoint;
-        private System.Windows.Forms.DataGridViewButtonColumn Col_Refresh;
     }
 }
 

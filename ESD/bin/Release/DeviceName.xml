@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gbk"?>
+<list>
+  <fan>
+    <addr>3412</addr>
+    <name>风机-A线</name>
+  </fan>
+  <fan>
+    <addr>7856</addr>
+    <name>风机-B线</name>
+  </fan>
+</list>

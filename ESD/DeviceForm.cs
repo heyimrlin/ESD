@@ -24,6 +24,8 @@ namespace ESD
 
         private void DeviceForm_Load(object sender, EventArgs e)
         {
+            lab_devName.Text = dev_Name;
+
             if (MainForm.handler != null && MainForm.handler.isConnected())
             {
                 MainForm.handler.SendData(DataSent.GetSendData(gw_SN, addr_Short, endpoint, 0x00));//获取状态数据
@@ -37,7 +39,6 @@ namespace ESD
 
         private void RefreshData()  //实时刷新数据
         {
-            lab_devName.Text = dev_Name;
             lab_hardVersion.Text = hard_Version;
             lab_softVersion.Text = soft_Version;
             lab_workTime.Text = work_Time;
@@ -159,22 +160,18 @@ namespace ESD
         {
             MainForm.FormState = false;
 
-            lab_devName.Text = "";
-            lab_hardVersion.Text = "";
-            lab_softVersion.Text = "";
-            lab_workTime.Text = "";
-            lab_balVoltage.Text = "";
-            lab_speed.Text = "";
-
-            btn_manual.Checked = true;
-            btn_fanoff.Checked = true;
-            btn_pressureoff.Checked = true;
-            btn_volnor.Checked = true;
-            btn_elecnor.Checked = true;
-            btn_balnor.Checked = true;
-            btn_fannor.Checked = true;
+            hard_Version = soft_Version = work_Time = bal_Voltage = fan_Speed = "";
+            work_Mode = "手动";
+            fan_State = pressure_State = "关闭";
+            error_Voltage = error_Electric = error_Bal = error_Fan = "正常";
 
             num_speed.Value = 1;
+        }
+
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            dev_Name = lab_devName.Text;
+            DialogResult = DialogResult.OK;
         }
     }
 }

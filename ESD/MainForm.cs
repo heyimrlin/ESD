@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace ESD
 {
@@ -17,17 +18,21 @@ namespace ESD
         UDPBroadcast broadcast = null;
         Thread Thread_Broadcast = null;
         public static TCPHandler handler = null;
-        private List<Fan> FanDevices = new List<Fan>();
         private Dictionary<string, Fan> FanList = new Dictionary<string, Fan>();
+
+        private XmlDocument document = new XmlDocument();
 
         Form device = new DeviceForm();
         public static bool FormState = false;
+        public static bool Receiving = false;
 
         public MainForm()
         {
             InitializeComponent();
             broadcast = new UDPBroadcast();
             Thread_Broadcast = new Thread(new ThreadStart(broadcast.SendThread));
+
+            document.Load(Application.StartupPath+"\\DeviceName.xml");
         }
 
         private void MainForm_Shown(object sender, EventArgs e)
@@ -217,16 +222,29 @@ namespace ESD
             Fan newFan = new Fan();
 
             newFan.DeviceName = "新风机设备";
-            newFan.NetState = "开";
+            newFan.NetState = "打开";
 
             //短地址
             byte[] tmp = data.Skip(2).Take(2).ToArray();
-            string addr_short = System.Text.Encoding.Default.GetString(tmp);
+            //string addr_short = System.Text.Encoding.Default.GetString(tmp);
+            string addr_short = tmp[0].ToString("X2") + tmp[1].ToString("X2");
             newFan.ShorAddress = addr_short;
+
+            XmlElement list = document.DocumentElement;
+            foreach (XmlNode fan in list.ChildNodes)
+            {
+                string addr = fan.FirstChild.InnerText;
+                string name = fan.LastChild.InnerText;
+                if (addr.Equals(addr_short))
+                {
+                    newFan.DeviceName = name;
+                }
+            }
 
             //EndPoint
             tmp = data.Skip(4).Take(1).ToArray();
-            string endpoint = System.Text.Encoding.Default.GetString(tmp);
+            //string endpoint = System.Text.Encoding.Default.GetString(tmp);
+            string endpoint = tmp[0].ToString("X2");
             newFan.EndPoint = endpoint;
 
             //设备ID
@@ -273,11 +291,13 @@ namespace ESD
 
             //短地址
             byte[] tmp = data.Skip(2).Take(2).ToArray();
-            string addr_short = System.Text.Encoding.Default.GetString(tmp);
+            string addr_short = tmp[0].ToString("X2") + tmp[1].ToString("X2");
+            //string addr_short = System.Text.Encoding.Default.GetString(tmp);
             
             //EndPoint
             tmp = data.Skip(4).Take(1).ToArray();
-            string endpoint = System.Text.Encoding.Default.GetString(tmp);
+            string endpoint = tmp[0].ToString("X2");
+            //string endpoint = System.Text.Encoding.Default.GetString(tmp);
 
             //RealData
             byte[] data_real;
@@ -296,11 +316,21 @@ namespace ESD
                 string pressure_state = (data_real[9] & 128) == 128 ? "打开" : "关闭";
 
                 tmp = data_real.Skip(10).Take(2).ToArray();
-                string work_voltage = "" + BitConverter.ToInt16(tmp, 0);
+                string work_voltage="";
+                if ((tmp[1] & 128) == 128)
+                {
+                    tmp[1] -= 128;
+                    work_voltage = "-"+BitConverter.ToInt16(tmp,0);
+                }
+                else
+                {
+                    work_voltage =  "" + BitConverter.ToInt16(tmp, 0);
+                }
+                 
 
                 string fan_speed = "" + data_real[12];
 
-                if (FanList.Keys.Contains(addr_short))
+                if (FanList.Keys.Contains<string>(addr_short)==true)
                 {
                     Fan fan = new Fan();
                     FanList.TryGetValue(addr_short, out fan);
@@ -363,7 +393,7 @@ namespace ESD
             {
                 return;
             }
-            
+
             TCPHandler.State = "更新设备状态成功！";
         }
 
@@ -456,6 +486,54 @@ namespace ESD
                 FormState = true;
 
                 device.ShowDialog();
+                if (device.DialogResult == DialogResult.OK)
+                {
+                    string aShort = DeviceForm.addr_Short;
+
+                    if (FanList.Keys.Contains(aShort))
+                    {
+                        Fan fan = new Fan();
+                        FanList.TryGetValue(aShort, out fan);
+                        fan.DeviceName = DeviceForm.dev_Name;
+
+                        FanList[aShort] = fan;
+
+                        Refresh_FanList();
+
+                        //在修改风机设备的名称之后将数据保存到xml文件中
+                        XmlElement list = document.DocumentElement;
+                        bool flag = true;
+                        foreach (XmlNode nfan in list.ChildNodes)
+                        {
+                            string addr = nfan.FirstChild.InnerText;
+                            string name = nfan.LastChild.InnerText;
+
+                            if (addr.Equals(DeviceForm.addr_Short))
+                            {
+                                nfan.LastChild.InnerText = DeviceForm.dev_Name;
+                                flag = false;
+                            }
+                        }
+
+                        if (flag)
+                        {
+                            XmlElement nFan = document.CreateElement("fan");
+                            XmlElement fAddr = document.CreateElement("addr");
+                            fAddr.InnerText = DeviceForm.addr_Short;
+                            XmlElement fName = document.CreateElement("name");
+                            fName.InnerText = DeviceForm.dev_Name;
+
+                            nFan.AppendChild(fAddr);
+                            nFan.AppendChild(fName);
+
+                            list.AppendChild(nFan);
+
+                            document.Save(Application.StartupPath + "\\DeviceName.xml");
+                        }
+
+                        MessageBox.Show("修改成功！", "操作提示");
+                    }
+                }
             }
         }
     }

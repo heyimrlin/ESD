@@ -43,6 +43,8 @@
             this.btn_manual = new CCWin.SkinControl.SkinRadioButton();
             this.skinLabel6 = new CCWin.SkinControl.SkinLabel();
             this.skinCaptionPanel2 = new CCWin.SkinControl.SkinCaptionPanel();
+            this.btn_save = new CCWin.SkinControl.SkinButton();
+            this.lab_devName = new CCWin.SkinControl.SkinTextBox();
             this.lab_speed = new CCWin.SkinControl.SkinLabel();
             this.skinLabel19 = new CCWin.SkinControl.SkinLabel();
             this.skinLabel8 = new CCWin.SkinControl.SkinLabel();
@@ -55,7 +57,6 @@
             this.skinLabel5 = new CCWin.SkinControl.SkinLabel();
             this.lab_hardVersion = new CCWin.SkinControl.SkinLabel();
             this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
-            this.lab_devName = new CCWin.SkinControl.SkinLabel();
             this.skinLabel1 = new CCWin.SkinControl.SkinLabel();
             this.skinCaptionPanel3 = new CCWin.SkinControl.SkinCaptionPanel();
             this.skinPanel7 = new CCWin.SkinControl.SkinPanel();
@@ -108,6 +109,7 @@
             this.skinCaptionPanel1.Controls.Add(this.skinLabel10);
             this.skinCaptionPanel1.Controls.Add(this.skinPanel1);
             this.skinCaptionPanel1.Controls.Add(this.skinLabel6);
+            this.skinCaptionPanel1.Enabled = false;
             this.skinCaptionPanel1.Location = new System.Drawing.Point(12, 251);
             this.skinCaptionPanel1.Name = "skinCaptionPanel1";
             this.skinCaptionPanel1.ShowBorder = true;
@@ -122,7 +124,6 @@
             this.skinPanel3.Controls.Add(this.btn_pressureoff);
             this.skinPanel3.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel3.DownBack = null;
-            this.skinPanel3.Enabled = false;
             this.skinPanel3.Location = new System.Drawing.Point(171, 131);
             this.skinPanel3.MouseBack = null;
             this.skinPanel3.Name = "skinPanel3";
@@ -188,7 +189,6 @@
             this.skinPanel2.Controls.Add(this.btn_fanoff);
             this.skinPanel2.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel2.DownBack = null;
-            this.skinPanel2.Enabled = false;
             this.skinPanel2.Location = new System.Drawing.Point(171, 90);
             this.skinPanel2.MouseBack = null;
             this.skinPanel2.Name = "skinPanel2";
@@ -254,7 +254,6 @@
             this.skinPanel1.Controls.Add(this.btn_manual);
             this.skinPanel1.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel1.DownBack = null;
-            this.skinPanel1.Enabled = false;
             this.skinPanel1.Location = new System.Drawing.Point(171, 49);
             this.skinPanel1.MouseBack = null;
             this.skinPanel1.Name = "skinPanel1";
@@ -316,6 +315,8 @@
             // skinCaptionPanel2
             // 
             this.skinCaptionPanel2.CaptionFont = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinCaptionPanel2.Controls.Add(this.btn_save);
+            this.skinCaptionPanel2.Controls.Add(this.lab_devName);
             this.skinCaptionPanel2.Controls.Add(this.lab_speed);
             this.skinCaptionPanel2.Controls.Add(this.skinLabel19);
             this.skinCaptionPanel2.Controls.Add(this.skinLabel8);
@@ -328,7 +329,6 @@
             this.skinCaptionPanel2.Controls.Add(this.skinLabel5);
             this.skinCaptionPanel2.Controls.Add(this.lab_hardVersion);
             this.skinCaptionPanel2.Controls.Add(this.skinLabel3);
-            this.skinCaptionPanel2.Controls.Add(this.lab_devName);
             this.skinCaptionPanel2.Controls.Add(this.skinLabel1);
             this.skinCaptionPanel2.Location = new System.Drawing.Point(12, 12);
             this.skinCaptionPanel2.Name = "skinCaptionPanel2";
@@ -336,6 +336,64 @@
             this.skinCaptionPanel2.Size = new System.Drawing.Size(359, 233);
             this.skinCaptionPanel2.TabIndex = 16;
             this.skinCaptionPanel2.Text = "基本信息";
+            // 
+            // btn_save
+            // 
+            this.btn_save.AutoSize = true;
+            this.btn_save.BackColor = System.Drawing.Color.Transparent;
+            this.btn_save.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_save.DownBack = null;
+            this.btn_save.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_save.Location = new System.Drawing.Point(299, 28);
+            this.btn_save.MouseBack = null;
+            this.btn_save.Name = "btn_save";
+            this.btn_save.NormlBack = null;
+            this.btn_save.Size = new System.Drawing.Size(52, 31);
+            this.btn_save.TabIndex = 39;
+            this.btn_save.Text = "保存";
+            this.btn_save.UseVisualStyleBackColor = false;
+            this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // lab_devName
+            // 
+            this.lab_devName.BackColor = System.Drawing.Color.Transparent;
+            this.lab_devName.DownBack = null;
+            this.lab_devName.Icon = null;
+            this.lab_devName.IconIsButton = false;
+            this.lab_devName.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.lab_devName.IsPasswordChat = '\0';
+            this.lab_devName.IsSystemPasswordChar = false;
+            this.lab_devName.Lines = new string[0];
+            this.lab_devName.Location = new System.Drawing.Point(171, 30);
+            this.lab_devName.Margin = new System.Windows.Forms.Padding(0);
+            this.lab_devName.MaxLength = 32767;
+            this.lab_devName.MinimumSize = new System.Drawing.Size(28, 28);
+            this.lab_devName.MouseBack = null;
+            this.lab_devName.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.lab_devName.Multiline = false;
+            this.lab_devName.Name = "lab_devName";
+            this.lab_devName.NormlBack = null;
+            this.lab_devName.Padding = new System.Windows.Forms.Padding(5);
+            this.lab_devName.ReadOnly = false;
+            this.lab_devName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.lab_devName.Size = new System.Drawing.Size(125, 28);
+            // 
+            // 
+            // 
+            this.lab_devName.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lab_devName.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lab_devName.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.lab_devName.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.lab_devName.SkinTxt.Name = "BaseText";
+            this.lab_devName.SkinTxt.Size = new System.Drawing.Size(115, 18);
+            this.lab_devName.SkinTxt.TabIndex = 0;
+            this.lab_devName.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.lab_devName.SkinTxt.WaterText = "";
+            this.lab_devName.TabIndex = 38;
+            this.lab_devName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lab_devName.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.lab_devName.WaterText = "";
+            this.lab_devName.WordWrap = true;
             // 
             // lab_speed
             // 
@@ -491,19 +549,6 @@
             this.skinLabel3.TabIndex = 26;
             this.skinLabel3.Text = "硬件版本：";
             // 
-            // lab_devName
-            // 
-            this.lab_devName.AutoSize = true;
-            this.lab_devName.BackColor = System.Drawing.Color.Transparent;
-            this.lab_devName.BorderColor = System.Drawing.Color.White;
-            this.lab_devName.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_devName.Location = new System.Drawing.Point(166, 30);
-            this.lab_devName.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lab_devName.Name = "lab_devName";
-            this.lab_devName.Size = new System.Drawing.Size(103, 25);
-            this.lab_devName.TabIndex = 25;
-            this.lab_devName.Text = "lab-Name";
-            // 
             // skinLabel1
             // 
             this.skinLabel1.AutoSize = true;
@@ -528,6 +573,7 @@
             this.skinCaptionPanel3.Controls.Add(this.skinLabel13);
             this.skinCaptionPanel3.Controls.Add(this.skinPanel6);
             this.skinCaptionPanel3.Controls.Add(this.skinLabel14);
+            this.skinCaptionPanel3.Enabled = false;
             this.skinCaptionPanel3.Location = new System.Drawing.Point(377, 12);
             this.skinCaptionPanel3.Name = "skinCaptionPanel3";
             this.skinCaptionPanel3.ShowBorder = true;
@@ -542,7 +588,6 @@
             this.skinPanel7.Controls.Add(this.btn_fannor);
             this.skinPanel7.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel7.DownBack = null;
-            this.skinPanel7.Enabled = false;
             this.skinPanel7.Location = new System.Drawing.Point(179, 174);
             this.skinPanel7.MouseBack = null;
             this.skinPanel7.Name = "skinPanel7";
@@ -610,7 +655,6 @@
             this.skinPanel4.Controls.Add(this.btn_balnor);
             this.skinPanel4.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel4.DownBack = null;
-            this.skinPanel4.Enabled = false;
             this.skinPanel4.Location = new System.Drawing.Point(179, 133);
             this.skinPanel4.MouseBack = null;
             this.skinPanel4.Name = "skinPanel4";
@@ -678,7 +722,6 @@
             this.skinPanel5.Controls.Add(this.btn_elecnor);
             this.skinPanel5.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel5.DownBack = null;
-            this.skinPanel5.Enabled = false;
             this.skinPanel5.Location = new System.Drawing.Point(179, 92);
             this.skinPanel5.MouseBack = null;
             this.skinPanel5.Name = "skinPanel5";
@@ -746,7 +789,6 @@
             this.skinPanel6.Controls.Add(this.btn_volnor);
             this.skinPanel6.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.skinPanel6.DownBack = null;
-            this.skinPanel6.Enabled = false;
             this.skinPanel6.Location = new System.Drawing.Point(179, 51);
             this.skinPanel6.MouseBack = null;
             this.skinPanel6.Name = "skinPanel6";
@@ -1040,7 +1082,6 @@
         private CCWin.SkinControl.SkinLabel skinLabel5;
         private CCWin.SkinControl.SkinLabel lab_hardVersion;
         private CCWin.SkinControl.SkinLabel skinLabel3;
-        private CCWin.SkinControl.SkinLabel lab_devName;
         private CCWin.SkinControl.SkinLabel skinLabel1;
         private CCWin.SkinControl.SkinCaptionPanel skinCaptionPanel3;
         private CCWin.SkinControl.SkinPanel skinPanel4;
@@ -1071,6 +1112,8 @@
         private CCWin.SkinControl.SkinLabel skinLabel17;
         private CCWin.SkinControl.SkinLabel lab_speed;
         private CCWin.SkinControl.SkinLabel skinLabel19;
+        private CCWin.SkinControl.SkinTextBox lab_devName;
+        private CCWin.SkinControl.SkinButton btn_save;
         private System.Windows.Forms.Timer Timer_Refresh;
     }
 }
