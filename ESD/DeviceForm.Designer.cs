@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DeviceForm));
             this.skinCaptionPanel1 = new CCWin.SkinControl.SkinCaptionPanel();
             this.skinPanel3 = new CCWin.SkinControl.SkinPanel();
             this.btn_pressureon = new CCWin.SkinControl.SkinRadioButton();
@@ -1022,6 +1023,7 @@
             this.Controls.Add(this.skinCaptionPanel1);
             this.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.Name = "DeviceForm";

@@ -29,20 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dgv_gwIP = new CCWin.SkinControl.SkinDataGridView();
             this.Col_SNID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_gwIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv_fanList = new CCWin.SkinControl.SkinDataGridView();
+            this.Col_FanID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_FanName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_LinkState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_PressureState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_FanState = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_BalVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_PressureError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_FanError = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_ShortAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_IEEEAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Col_EndPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cMenu_FanList = new CCWin.SkinControl.SkinContextMenuStrip();
             this.cMenu_Delete = new System.Windows.Forms.ToolStripMenuItem();
             this.cMenu_Check = new System.Windows.Forms.ToolStripMenuItem();
@@ -72,17 +83,6 @@
             this.Timer_RefreshIPList = new System.Windows.Forms.Timer(this.components);
             this.Timer_Search = new System.Windows.Forms.Timer(this.components);
             this.Timer_Received = new System.Windows.Forms.Timer(this.components);
-            this.Col_FanID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_FanName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_LinkState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_PressureState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_FanState = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_BalVoltage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_PressureError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_FanError = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_ShortAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_IEEEAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_EndPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_gwIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList)).BeginInit();
             this.cMenu_FanList.SuspendLayout();
@@ -94,33 +94,33 @@
             // dgv_gwIP
             // 
             this.dgv_gwIP.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            this.dgv_gwIP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.dgv_gwIP.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.dgv_gwIP.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv_gwIP.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_gwIP.ColumnFont = null;
             this.dgv_gwIP.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_gwIP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_gwIP.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.dgv_gwIP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_gwIP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Col_SNID,
             this.Col_gwIP});
             this.dgv_gwIP.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_gwIP.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_gwIP.DefaultCellStyle = dataGridViewCellStyle13;
             this.dgv_gwIP.EnableHeadersVisualStyles = false;
             this.dgv_gwIP.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgv_gwIP.HeadFont = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -130,11 +130,11 @@
             this.dgv_gwIP.ReadOnly = true;
             this.dgv_gwIP.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgv_gwIP.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_gwIP.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_gwIP.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.dgv_gwIP.RowTemplate.Height = 23;
             this.dgv_gwIP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_gwIP.Size = new System.Drawing.Size(415, 549);
@@ -147,8 +147,8 @@
             // 
             // Col_SNID
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Col_SNID.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Col_SNID.DefaultCellStyle = dataGridViewCellStyle12;
             this.Col_SNID.HeaderText = "网关设备SNID";
             this.Col_SNID.Name = "Col_SNID";
             this.Col_SNID.ReadOnly = true;
@@ -164,20 +164,20 @@
             // dgv_fanList
             // 
             this.dgv_fanList.AllowUserToAddRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
-            this.dgv_fanList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.dgv_fanList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle15;
             this.dgv_fanList.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv_fanList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dgv_fanList.ColumnFont = null;
             this.dgv_fanList.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_fanList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle16.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle16.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle16.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_fanList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
             this.dgv_fanList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_fanList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Col_FanID,
@@ -193,14 +193,14 @@
             this.Col_EndPoint});
             this.dgv_fanList.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgv_fanList.ContextMenuStrip = this.cMenu_FanList;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_fanList.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_fanList.DefaultCellStyle = dataGridViewCellStyle17;
             this.dgv_fanList.EnableHeadersVisualStyles = false;
             this.dgv_fanList.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.dgv_fanList.HeadFont = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -210,11 +210,11 @@
             this.dgv_fanList.ReadOnly = true;
             this.dgv_fanList.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgv_fanList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgv_fanList.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_fanList.RowsDefaultCellStyle = dataGridViewCellStyle18;
             this.dgv_fanList.RowTemplate.Height = 23;
             this.dgv_fanList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_fanList.Size = new System.Drawing.Size(861, 549);
@@ -222,6 +222,94 @@
             this.dgv_fanList.TitleBack = null;
             this.dgv_fanList.TitleBackColorBegin = System.Drawing.Color.White;
             this.dgv_fanList.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
+            // 
+            // Col_FanID
+            // 
+            this.Col_FanID.DataPropertyName = "Device_ID";
+            this.Col_FanID.HeaderText = "风机ID";
+            this.Col_FanID.Name = "Col_FanID";
+            this.Col_FanID.ReadOnly = true;
+            this.Col_FanID.Visible = false;
+            // 
+            // Col_FanName
+            // 
+            this.Col_FanName.DataPropertyName = "Device_Name";
+            this.Col_FanName.HeaderText = "设备名";
+            this.Col_FanName.Name = "Col_FanName";
+            this.Col_FanName.ReadOnly = true;
+            this.Col_FanName.Width = 120;
+            // 
+            // Col_LinkState
+            // 
+            this.Col_LinkState.DataPropertyName = "State_Net";
+            this.Col_LinkState.HeaderText = "联网状态";
+            this.Col_LinkState.Name = "Col_LinkState";
+            this.Col_LinkState.ReadOnly = true;
+            this.Col_LinkState.Width = 115;
+            // 
+            // Col_PressureState
+            // 
+            this.Col_PressureState.DataPropertyName = "State_Pressure";
+            this.Col_PressureState.HeaderText = "高压状态";
+            this.Col_PressureState.Name = "Col_PressureState";
+            this.Col_PressureState.ReadOnly = true;
+            this.Col_PressureState.Width = 115;
+            // 
+            // Col_FanState
+            // 
+            this.Col_FanState.DataPropertyName = "State_Fan";
+            this.Col_FanState.HeaderText = "风扇状态";
+            this.Col_FanState.Name = "Col_FanState";
+            this.Col_FanState.ReadOnly = true;
+            this.Col_FanState.Width = 115;
+            // 
+            // Col_BalVoltage
+            // 
+            this.Col_BalVoltage.DataPropertyName = "Voltage_Balance";
+            this.Col_BalVoltage.HeaderText = "平衡电压(mV)";
+            this.Col_BalVoltage.Name = "Col_BalVoltage";
+            this.Col_BalVoltage.ReadOnly = true;
+            this.Col_BalVoltage.Width = 120;
+            // 
+            // Col_PressureError
+            // 
+            this.Col_PressureError.DataPropertyName = "Error_Pressure";
+            this.Col_PressureError.HeaderText = "高压异常";
+            this.Col_PressureError.Name = "Col_PressureError";
+            this.Col_PressureError.ReadOnly = true;
+            this.Col_PressureError.Width = 115;
+            // 
+            // Col_FanError
+            // 
+            this.Col_FanError.DataPropertyName = "Error_Fan";
+            this.Col_FanError.HeaderText = "风扇异常";
+            this.Col_FanError.Name = "Col_FanError";
+            this.Col_FanError.ReadOnly = true;
+            this.Col_FanError.Width = 115;
+            // 
+            // Col_ShortAddress
+            // 
+            this.Col_ShortAddress.DataPropertyName = "Address_Short";
+            this.Col_ShortAddress.HeaderText = "短地址";
+            this.Col_ShortAddress.Name = "Col_ShortAddress";
+            this.Col_ShortAddress.ReadOnly = true;
+            this.Col_ShortAddress.Visible = false;
+            // 
+            // Col_IEEEAddress
+            // 
+            this.Col_IEEEAddress.DataPropertyName = "Address_IEEE";
+            this.Col_IEEEAddress.HeaderText = "IEEE地址";
+            this.Col_IEEEAddress.Name = "Col_IEEEAddress";
+            this.Col_IEEEAddress.ReadOnly = true;
+            this.Col_IEEEAddress.Visible = false;
+            // 
+            // Col_EndPoint
+            // 
+            this.Col_EndPoint.DataPropertyName = "endpoint";
+            this.Col_EndPoint.HeaderText = "端口";
+            this.Col_EndPoint.Name = "Col_EndPoint";
+            this.Col_EndPoint.ReadOnly = true;
+            this.Col_EndPoint.Visible = false;
             // 
             // cMenu_FanList
             // 
@@ -588,94 +676,6 @@
             // 
             this.Timer_Received.Tick += new System.EventHandler(this.Timer_Received_Tick);
             // 
-            // Col_FanID
-            // 
-            this.Col_FanID.DataPropertyName = "Device_ID";
-            this.Col_FanID.HeaderText = "风机ID";
-            this.Col_FanID.Name = "Col_FanID";
-            this.Col_FanID.ReadOnly = true;
-            this.Col_FanID.Visible = false;
-            // 
-            // Col_FanName
-            // 
-            this.Col_FanName.DataPropertyName = "Device_Name";
-            this.Col_FanName.HeaderText = "风机设备名";
-            this.Col_FanName.Name = "Col_FanName";
-            this.Col_FanName.ReadOnly = true;
-            this.Col_FanName.Width = 150;
-            // 
-            // Col_LinkState
-            // 
-            this.Col_LinkState.DataPropertyName = "State_Net";
-            this.Col_LinkState.HeaderText = "联网状态";
-            this.Col_LinkState.Name = "Col_LinkState";
-            this.Col_LinkState.ReadOnly = true;
-            this.Col_LinkState.Width = 120;
-            // 
-            // Col_PressureState
-            // 
-            this.Col_PressureState.DataPropertyName = "State_Pressure";
-            this.Col_PressureState.HeaderText = "高压状态";
-            this.Col_PressureState.Name = "Col_PressureState";
-            this.Col_PressureState.ReadOnly = true;
-            this.Col_PressureState.Width = 120;
-            // 
-            // Col_FanState
-            // 
-            this.Col_FanState.DataPropertyName = "State_Fan";
-            this.Col_FanState.HeaderText = "风扇状态";
-            this.Col_FanState.Name = "Col_FanState";
-            this.Col_FanState.ReadOnly = true;
-            this.Col_FanState.Width = 120;
-            // 
-            // Col_BalVoltage
-            // 
-            this.Col_BalVoltage.DataPropertyName = "Voltage_Balance";
-            this.Col_BalVoltage.HeaderText = "平衡电压(mV)";
-            this.Col_BalVoltage.Name = "Col_BalVoltage";
-            this.Col_BalVoltage.ReadOnly = true;
-            this.Col_BalVoltage.Width = 180;
-            // 
-            // Col_PressureError
-            // 
-            this.Col_PressureError.DataPropertyName = "Error_Pressure";
-            this.Col_PressureError.HeaderText = "高压异常";
-            this.Col_PressureError.Name = "Col_PressureError";
-            this.Col_PressureError.ReadOnly = true;
-            this.Col_PressureError.Width = 120;
-            // 
-            // Col_FanError
-            // 
-            this.Col_FanError.DataPropertyName = "Error_Fan";
-            this.Col_FanError.HeaderText = "风扇异常";
-            this.Col_FanError.Name = "Col_FanError";
-            this.Col_FanError.ReadOnly = true;
-            this.Col_FanError.Width = 120;
-            // 
-            // Col_ShortAddress
-            // 
-            this.Col_ShortAddress.DataPropertyName = "Address_Short";
-            this.Col_ShortAddress.HeaderText = "短地址";
-            this.Col_ShortAddress.Name = "Col_ShortAddress";
-            this.Col_ShortAddress.ReadOnly = true;
-            this.Col_ShortAddress.Visible = false;
-            // 
-            // Col_IEEEAddress
-            // 
-            this.Col_IEEEAddress.DataPropertyName = "Address_IEEE";
-            this.Col_IEEEAddress.HeaderText = "IEEE地址";
-            this.Col_IEEEAddress.Name = "Col_IEEEAddress";
-            this.Col_IEEEAddress.ReadOnly = true;
-            this.Col_IEEEAddress.Visible = false;
-            // 
-            // Col_EndPoint
-            // 
-            this.Col_EndPoint.DataPropertyName = "endpoint";
-            this.Col_EndPoint.HeaderText = "端口";
-            this.Col_EndPoint.Name = "Col_EndPoint";
-            this.Col_EndPoint.ReadOnly = true;
-            this.Col_EndPoint.Visible = false;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 25F);
@@ -690,12 +690,13 @@
             this.Controls.Add(this.menu);
             this.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Device Management System 1.0.0_20180416_Base";
+            this.Text = "Device Management System 1.0.0_20180417_Base";
             this.Shown += new System.EventHandler(this.MainForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_gwIP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList)).EndInit();

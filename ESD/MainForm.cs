@@ -203,7 +203,10 @@ namespace ESD
                     Parse_DeviceInfo(data);
                     break;
                 case 0x29://删除指定设备时返回的数据
-                    Parse_DeleteDevice(data);
+                    if (data[3] == 0x95)
+                    {
+                        Parse_DeleteDevice(data);
+                    }
                     break;
                 case 0x70://设备上传的数据
                     Parse_DeviceState(data);
@@ -223,6 +226,10 @@ namespace ESD
 
             newFan.DeviceName = "新风机设备";
             newFan.NetState = "打开";
+            newFan.PressureError = "无";
+            newFan.FanError = "无";
+            newFan.PressureState = "未知";
+            newFan.FanState = "未知";
 
             //短地址
             byte[] tmp = data.Skip(2).Take(2).ToArray();
@@ -271,7 +278,7 @@ namespace ESD
 
         private void Parse_DeleteDevice(byte[] data)    //处理删除指定设备时返回的数据
         {
-            if (data[3] == 0x95)
+            if (data.Length==data[1] && data[3] == 0x95)
             {
                 TCPHandler.State = "删除设备成功！";
             }
