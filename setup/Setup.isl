@@ -1178,8 +1178,10 @@
 		<row><td>ZHUOYUE</td><td>ZHUOYUETECH</td><td>ZhuoYue</td><td/><td>0</td><td/></row>
 		<row><td>ZHUOYUETECH</td><td>ProgramFilesFolder</td><td>ZHUOYU~1|ZhuoYueTech</td><td/><td>0</td><td/></row>
 		<row><td>company_name</td><td>ProgramMenuFolder</td><td>公司名称</td><td/><td>1</td><td/></row>
+		<row><td>zhuoyu_1_zhuoyuetech</td><td>ProgramMenuFolder</td><td>zhuoyu~1|zhuoyuetech</td><td/><td>1</td><td/></row>
 		<row><td>zhuoyue</td><td>company_name</td><td>ZhuoYue</td><td/><td>1</td><td/></row>
 		<row><td>zhuoyue1</td><td>zhuoyuetech</td><td>zhuoyue</td><td/><td>1</td><td/></row>
+		<row><td>zhuoyue2</td><td>zhuoyu_1_zhuoyuetech</td><td>zhuoyue</td><td/><td>1</td><td/></row>
 		<row><td>zhuoyuetech</td><td>ProgramMenuFolder</td><td>zhuoyuetech</td><td/><td>1</td><td/></row>
 	</table>
 
@@ -2629,7 +2631,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>-1977203500</td></row>
+		<row><td>COMPANY_NAME</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>-1842991544</td></row>
 		<row><td>DN_AlwaysInstall</td><td>2052</td><td>始终安装</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>2052</td><td>系统颜色设置不足以运行 [ProductName]。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1977169388</td></row>
@@ -3739,8 +3741,8 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>2052</td><td>对于运行 [ProductName] 处理器不足。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>2052</td><td>对于运行 [ProductName] 内存量不足。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>2052</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>-1977171532</td></row>
-		<row><td>ID_STRING1</td><td>2052</td><td>http://www.ZhuoYueTech.com</td><td>0</td><td/><td>-1977203500</td></row>
-		<row><td>ID_STRING2</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>-1977203500</td></row>
+		<row><td>ID_STRING1</td><td>2052</td><td>http://www.ZhuoYueTech.com</td><td>0</td><td/><td>-1842991544</td></row>
+		<row><td>ID_STRING2</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>-1842991544</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch ESD.vshost.exe</td><td>0</td><td/><td>-1977197932</td></row>
 		<row><td>ID_STRING3</td><td>2052</td><td>Launch ESD.vshost.exe</td><td>0</td><td/><td>-1977197932</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td/><td>0</td><td/><td>-1977180972</td></row>
@@ -3867,7 +3869,7 @@
 		<row><td>ESD.exe_5A0BF308C63748E488F8E0E8B2DCB755.exe</td><td/><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe</td><td>0</td></row>
 		<row><td>ESD.vshost.exe1_32A80D044EEA47608A1F4E19F603248D.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>ESD.vshost.exe_F122809459BA44CFB2714AD97F3ED1C6.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
-		<row><td>UNINST_Uninstall_Z_AB6B4A12D65A47B19B332E1A28B7E281.exe</td><td/><td>D:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
+		<row><td>UNINST_Uninstall_Z_9A621A57329242BCAFA2B6FBB26F4572.exe</td><td/><td>E:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4453,7 +4455,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
 		<row><td>ESD.exe</td><td>ESD.exe</td><td/><td>zhuoyue</td><td>2</td></row>
-		<row><td>UNINST_Uninstall_ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>zhuoyue1</td><td>2</td></row>
+		<row><td>UNINST_Uninstall_ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>zhuoyue2</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4541,7 +4543,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="I4">ISAttributes</col>
 		<row><td>ESD.exe</td><td>zhuoyue</td><td>##IDS_SHORTCUT_DISPLAY_NAME4##</td><td>ESD.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ESD.exe_5A0BF308C63748E488F8E0E8B2DCB755.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 		<row><td>ESD.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME4##</td><td>ESD.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ESD.exe1_3F72E62568D04BBC9334BF75E6843D2D.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>UNINST_Uninstall_ZhuoYue</td><td>zhuoyue1</td><td>UNINST|Uninstall ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {E9439FBE-A71D-4246-8E45-778238575E35}</td><td/><td/><td>UNINST_Uninstall_Z_AB6B4A12D65A47B19B332E1A28B7E281.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>UNINST_Uninstall_ZhuoYue</td><td>zhuoyue2</td><td>UNINST|Uninstall ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {E9439FBE-A71D-4246-8E45-778238575E35}</td><td/><td/><td>UNINST_Uninstall_Z_9A621A57329242BCAFA2B6FBB26F4572.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
