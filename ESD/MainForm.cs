@@ -290,7 +290,11 @@ namespace ESD
 
         private void Parse_DeviceState(byte[] data) //处理返回的设备状态数据
         {
-            if (data.Length != data[1] + 2)
+            if (data.Length != 31)
+            {
+                return;
+            }
+            else if (data.Length != data[1] + 2)
             {
                 TCPHandler.State = "更新设备状态失败！";
                 return;
