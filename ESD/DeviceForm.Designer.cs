@@ -110,7 +110,6 @@
             this.skinCaptionPanel1.Controls.Add(this.skinLabel10);
             this.skinCaptionPanel1.Controls.Add(this.skinPanel1);
             this.skinCaptionPanel1.Controls.Add(this.skinLabel6);
-            this.skinCaptionPanel1.Enabled = false;
             this.skinCaptionPanel1.Location = new System.Drawing.Point(12, 251);
             this.skinCaptionPanel1.Name = "skinCaptionPanel1";
             this.skinCaptionPanel1.ShowBorder = true;
@@ -134,10 +133,10 @@
             // 
             // btn_pressureon
             // 
-            this.btn_pressureon.AutoSize = true;
             this.btn_pressureon.BackColor = System.Drawing.Color.Transparent;
             this.btn_pressureon.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_pressureon.DownBack = null;
+            this.btn_pressureon.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_pressureon.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_pressureon.Location = new System.Drawing.Point(65, 3);
             this.btn_pressureon.MouseBack = null;
@@ -153,12 +152,12 @@
             // 
             // btn_pressureoff
             // 
-            this.btn_pressureoff.AutoSize = true;
             this.btn_pressureoff.BackColor = System.Drawing.Color.Transparent;
             this.btn_pressureoff.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_pressureoff.DownBack = null;
+            this.btn_pressureoff.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_pressureoff.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_pressureoff.Location = new System.Drawing.Point(4, 3);
+            this.btn_pressureoff.Location = new System.Drawing.Point(5, 3);
             this.btn_pressureoff.MouseBack = null;
             this.btn_pressureoff.Name = "btn_pressureoff";
             this.btn_pressureoff.NormlBack = null;
@@ -199,10 +198,10 @@
             // 
             // btn_fanon
             // 
-            this.btn_fanon.AutoSize = true;
             this.btn_fanon.BackColor = System.Drawing.Color.Transparent;
             this.btn_fanon.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_fanon.DownBack = null;
+            this.btn_fanon.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_fanon.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_fanon.Location = new System.Drawing.Point(65, 3);
             this.btn_fanon.MouseBack = null;
@@ -218,12 +217,12 @@
             // 
             // btn_fanoff
             // 
-            this.btn_fanoff.AutoSize = true;
             this.btn_fanoff.BackColor = System.Drawing.Color.Transparent;
             this.btn_fanoff.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_fanoff.DownBack = null;
+            this.btn_fanoff.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_fanoff.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_fanoff.Location = new System.Drawing.Point(4, 3);
+            this.btn_fanoff.Location = new System.Drawing.Point(5, 3);
             this.btn_fanoff.MouseBack = null;
             this.btn_fanoff.Name = "btn_fanoff";
             this.btn_fanoff.NormlBack = null;
@@ -264,10 +263,10 @@
             // 
             // btn_auto
             // 
-            this.btn_auto.AutoSize = true;
             this.btn_auto.BackColor = System.Drawing.Color.Transparent;
             this.btn_auto.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_auto.DownBack = null;
+            this.btn_auto.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_auto.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_auto.Location = new System.Drawing.Point(65, 3);
             this.btn_auto.MouseBack = null;
@@ -283,19 +282,19 @@
             // 
             // btn_manual
             // 
-            this.btn_manual.AutoSize = true;
             this.btn_manual.BackColor = System.Drawing.Color.Transparent;
             this.btn_manual.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_manual.DownBack = null;
+            this.btn_manual.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_manual.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_manual.Location = new System.Drawing.Point(4, 3);
+            this.btn_manual.Location = new System.Drawing.Point(5, 3);
             this.btn_manual.MouseBack = null;
             this.btn_manual.Name = "btn_manual";
             this.btn_manual.NormlBack = null;
             this.btn_manual.SelectedDownBack = null;
             this.btn_manual.SelectedMouseBack = null;
             this.btn_manual.SelectedNormlBack = null;
-            this.btn_manual.Size = new System.Drawing.Size(55, 24);
+            this.btn_manual.Size = new System.Drawing.Size(49, 24);
             this.btn_manual.TabIndex = 2;
             this.btn_manual.Text = "手动";
             this.btn_manual.UseVisualStyleBackColor = false;
@@ -574,7 +573,6 @@
             this.skinCaptionPanel3.Controls.Add(this.skinLabel13);
             this.skinCaptionPanel3.Controls.Add(this.skinPanel6);
             this.skinCaptionPanel3.Controls.Add(this.skinLabel14);
-            this.skinCaptionPanel3.Enabled = false;
             this.skinCaptionPanel3.Location = new System.Drawing.Point(377, 12);
             this.skinCaptionPanel3.Name = "skinCaptionPanel3";
             this.skinCaptionPanel3.ShowBorder = true;
@@ -598,10 +596,10 @@
             // 
             // btn_fanabn
             // 
-            this.btn_fanabn.AutoSize = true;
             this.btn_fanabn.BackColor = System.Drawing.Color.Transparent;
             this.btn_fanabn.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_fanabn.DownBack = null;
+            this.btn_fanabn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_fanabn.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_fanabn.Location = new System.Drawing.Point(65, 3);
             this.btn_fanabn.MouseBack = null;
@@ -617,13 +615,13 @@
             // 
             // btn_fannor
             // 
-            this.btn_fannor.AutoSize = true;
             this.btn_fannor.BackColor = System.Drawing.Color.Transparent;
             this.btn_fannor.Checked = true;
             this.btn_fannor.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_fannor.DownBack = null;
+            this.btn_fannor.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_fannor.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_fannor.Location = new System.Drawing.Point(4, 3);
+            this.btn_fannor.Location = new System.Drawing.Point(5, 3);
             this.btn_fannor.MouseBack = null;
             this.btn_fannor.Name = "btn_fannor";
             this.btn_fannor.NormlBack = null;
@@ -665,10 +663,10 @@
             // 
             // btn_balabn
             // 
-            this.btn_balabn.AutoSize = true;
             this.btn_balabn.BackColor = System.Drawing.Color.Transparent;
             this.btn_balabn.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_balabn.DownBack = null;
+            this.btn_balabn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_balabn.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_balabn.Location = new System.Drawing.Point(65, 3);
             this.btn_balabn.MouseBack = null;
@@ -684,13 +682,13 @@
             // 
             // btn_balnor
             // 
-            this.btn_balnor.AutoSize = true;
             this.btn_balnor.BackColor = System.Drawing.Color.Transparent;
             this.btn_balnor.Checked = true;
             this.btn_balnor.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_balnor.DownBack = null;
+            this.btn_balnor.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_balnor.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_balnor.Location = new System.Drawing.Point(4, 3);
+            this.btn_balnor.Location = new System.Drawing.Point(5, 3);
             this.btn_balnor.MouseBack = null;
             this.btn_balnor.Name = "btn_balnor";
             this.btn_balnor.NormlBack = null;
@@ -732,10 +730,10 @@
             // 
             // btn_elecabn
             // 
-            this.btn_elecabn.AutoSize = true;
             this.btn_elecabn.BackColor = System.Drawing.Color.Transparent;
             this.btn_elecabn.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_elecabn.DownBack = null;
+            this.btn_elecabn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_elecabn.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_elecabn.Location = new System.Drawing.Point(65, 3);
             this.btn_elecabn.MouseBack = null;
@@ -751,13 +749,13 @@
             // 
             // btn_elecnor
             // 
-            this.btn_elecnor.AutoSize = true;
             this.btn_elecnor.BackColor = System.Drawing.Color.Transparent;
             this.btn_elecnor.Checked = true;
             this.btn_elecnor.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_elecnor.DownBack = null;
+            this.btn_elecnor.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_elecnor.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_elecnor.Location = new System.Drawing.Point(4, 3);
+            this.btn_elecnor.Location = new System.Drawing.Point(5, 3);
             this.btn_elecnor.MouseBack = null;
             this.btn_elecnor.Name = "btn_elecnor";
             this.btn_elecnor.NormlBack = null;
@@ -799,10 +797,10 @@
             // 
             // btn_volabn
             // 
-            this.btn_volabn.AutoSize = true;
             this.btn_volabn.BackColor = System.Drawing.Color.Transparent;
             this.btn_volabn.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_volabn.DownBack = null;
+            this.btn_volabn.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_volabn.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btn_volabn.Location = new System.Drawing.Point(65, 3);
             this.btn_volabn.MouseBack = null;
@@ -818,13 +816,13 @@
             // 
             // btn_volnor
             // 
-            this.btn_volnor.AutoSize = true;
             this.btn_volnor.BackColor = System.Drawing.Color.Transparent;
             this.btn_volnor.Checked = true;
             this.btn_volnor.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_volnor.DownBack = null;
+            this.btn_volnor.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btn_volnor.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_volnor.Location = new System.Drawing.Point(4, 3);
+            this.btn_volnor.Location = new System.Drawing.Point(5, 3);
             this.btn_volnor.MouseBack = null;
             this.btn_volnor.Name = "btn_volnor";
             this.btn_volnor.NormlBack = null;
@@ -1034,23 +1032,16 @@
             this.skinCaptionPanel1.ResumeLayout(false);
             this.skinCaptionPanel1.PerformLayout();
             this.skinPanel3.ResumeLayout(false);
-            this.skinPanel3.PerformLayout();
             this.skinPanel2.ResumeLayout(false);
-            this.skinPanel2.PerformLayout();
             this.skinPanel1.ResumeLayout(false);
-            this.skinPanel1.PerformLayout();
             this.skinCaptionPanel2.ResumeLayout(false);
             this.skinCaptionPanel2.PerformLayout();
             this.skinCaptionPanel3.ResumeLayout(false);
             this.skinCaptionPanel3.PerformLayout();
             this.skinPanel7.ResumeLayout(false);
-            this.skinPanel7.PerformLayout();
             this.skinPanel4.ResumeLayout(false);
-            this.skinPanel4.PerformLayout();
             this.skinPanel5.ResumeLayout(false);
-            this.skinPanel5.PerformLayout();
             this.skinPanel6.ResumeLayout(false);
-            this.skinPanel6.PerformLayout();
             this.skinCaptionPanel4.ResumeLayout(false);
             this.skinCaptionPanel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.num_speed)).EndInit();

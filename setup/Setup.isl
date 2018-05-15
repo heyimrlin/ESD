@@ -340,8 +340,8 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>CSkin.dll</td><td>{DD06CDE2-B335-4F2F-B154-817146F56C96}</td><td>INSTALLDIR</td><td>2</td><td/><td>cskin.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ESD.exe</td><td>{3CF8EFD4-CCF9-47F9-9753-C50182DEAC65}</td><td>INSTALLDIR</td><td>2</td><td/><td>esd.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>CSkin.dll</td><td>{790C5BEB-156A-4247-937E-1DF288CB4030}</td><td>INSTALLDIR</td><td>2</td><td/><td>cskin.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ESD.exe</td><td>{106D77DD-3F91-4377-951F-6EB28BEFA979}</td><td>INSTALLDIR</td><td>2</td><td/><td>esd.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{283382B4-22EB-4D39-94F7-BFFAD987574D}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>IS_ININSTALL_SHORTCUT</td><td>{112F075C-1FE0-4669-82D3-01D9DAD75FB6}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
@@ -941,10 +941,10 @@
 		<row><td>InstallWelcome</td><td>Back</td><td>NewDialog</td><td>SplashBitmap</td><td>Display_IsBitmapDlg</td><td>0</td></row>
 		<row><td>InstallWelcome</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>InstallWelcome</td><td>Next</td><td>NewDialog</td><td>DestinationFolder</td><td>1</td><td>0</td></row>
-		<row><td>LicenseAgreement</td><td>Back</td><td>NewDialog</td><td>InstallWelcome</td><td>1</td><td>0</td></row>
+		<row><td>LicenseAgreement</td><td>Back</td><td>NewDialog</td><td>InstallWelcome</td><td>NOT Installed</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>LicenseAgreement</td><td>ISPrintButton</td><td>DoAction</td><td>ISPrint</td><td>1</td><td>0</td></row>
-		<row><td>LicenseAgreement</td><td>Next</td><td>NewDialog</td><td>CustomerInformation</td><td>AgreeToLicense = "Yes"</td><td>0</td></row>
+		<row><td>LicenseAgreement</td><td>Next</td><td>NewDialog</td><td>DestinationFolder</td><td>AgreeToLicense = "Yes"</td><td>0</td></row>
 		<row><td>MaintenanceType</td><td>Back</td><td>NewDialog</td><td>MaintenanceWelcome</td><td>1</td><td>0</td></row>
 		<row><td>MaintenanceType</td><td>Cancel</td><td>SpawnDialog</td><td>CancelSetup</td><td>1</td><td>0</td></row>
 		<row><td>MaintenanceType</td><td>Next</td><td>NewDialog</td><td>CustomSetup</td><td>_IsMaintenance = "Change"</td><td>12</td></row>
@@ -1893,9 +1893,9 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>cskin.dll</td><td>CSkin.dll</td><td>CSkin.dll</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\CSkin.dll</td><td>1</td><td/></row>
-		<row><td>devicename.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DeviceName.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\DeviceName.xml</td><td>1</td><td/></row>
+		<row><td>devicename.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>DEVICE~1.XML|DeviceName.xml</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\DeviceName.xml</td><td>1</td><td/></row>
 		<row><td>esd.exe</td><td>ESD.exe</td><td>ESD.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe</td><td>1</td><td/></row>
-		<row><td>esd.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>ESD.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe.config</td><td>1</td><td/></row>
+		<row><td>esd.exe.config</td><td>ISX_DEFAULTCOMPONENT</td><td>ESDEXE~1.CON|ESD.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe.config</td><td>1</td><td/></row>
 		<row><td>esd.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>ESD.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.pdb</td><td>1</td><td/></row>
 	</table>
 
@@ -2039,8 +2039,8 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>CSkin.dll</td><td/><td/><td>_F9DB1406_1D8F_4ED6_B013_83BD6E854890_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ESD.exe</td><td/><td/><td>_1A91E6C7_56AB_4781_A5F5_D04EA8409963_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>CSkin.dll</td><td/><td/><td>_EF9040B3_6BA8_4F28_881E_07950E4DDC9F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ESD.exe</td><td/><td/><td>_6231CFB8_77C2_4ABC_ACBA_2EB2280F9B96_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_55F219D6_0B49_4FF6_A1B9_BBD9C523554B_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>IS_ININSTALL_SHORTCUT</td><td/><td/><td>_1D1CCEFF_A98E_4392_8647_34435B85AA4C_FILTER</td><td/><td/><td/><td/></row>
 	</table>
@@ -2631,7 +2631,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>178687094</td></row>
+		<row><td>COMPANY_NAME</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>312876264</td></row>
 		<row><td>DN_AlwaysInstall</td><td>2052</td><td>始终安装</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>2052</td><td>系统颜色设置不足以运行 [ProductName]。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-1977169388</td></row>
@@ -3453,6 +3453,10 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>2052</td><td>Launch ESD.exe</td><td>0</td><td/><td>-1977201836</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td/><td>0</td><td/><td>-1977191340</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>2052</td><td>ZhuoYue.exe</td><td>0</td><td/><td>-1977166636</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td/><td>0</td><td/><td>312906984</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>2052</td><td>LAUNCH~1.EXE|Launch ESD.exe</td><td>0</td><td/><td>312906984</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td/><td>0</td><td/><td>312905000</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>2052</td><td>LAUNCH~1.EXE|Launch ESD.exe</td><td>0</td><td/><td>312905000</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>2052</td><td>从以下服务器列表中选择要连接的数据库服务器。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>2052</td><td>从以下的编录名称列表中，选择您希望将其作为目标的数据库编录。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>2052</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>-1977173580</td></row>
@@ -3741,14 +3745,16 @@
 		<row><td>IDS__TargetReq_DESC_PROCESSOR</td><td>2052</td><td>对于运行 [ProductName] 处理器不足。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>2052</td><td>对于运行 [ProductName] 内存量不足。</td><td>0</td><td/><td>-1977171532</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>2052</td><td>对于运行 [ProductName] 屏幕分辨率不足。</td><td>0</td><td/><td>-1977171532</td></row>
-		<row><td>ID_STRING1</td><td>2052</td><td>http://www.ZhuoYueTech.com</td><td>0</td><td/><td>178687094</td></row>
-		<row><td>ID_STRING2</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>178687094</td></row>
+		<row><td>ID_STRING1</td><td>2052</td><td>http://www.ZhuoYueTech.com</td><td>0</td><td/><td>312876264</td></row>
+		<row><td>ID_STRING2</td><td>2052</td><td>ZhuoYueTech</td><td>0</td><td/><td>312876264</td></row>
 		<row><td>ID_STRING3</td><td>1033</td><td>Launch ESD.vshost.exe</td><td>0</td><td/><td>-1977197932</td></row>
 		<row><td>ID_STRING3</td><td>2052</td><td>Launch ESD.vshost.exe</td><td>0</td><td/><td>-1977197932</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td/><td>0</td><td/><td>-1977180972</td></row>
 		<row><td>ID_STRING4</td><td>2052</td><td/><td>0</td><td/><td>-1977180972</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>ZhuoYue.exe</td><td>0</td><td/><td>-1977219852</td></row>
 		<row><td>ID_STRING5</td><td>2052</td><td>ZhuoYue.exe</td><td>0</td><td/><td>-1977219852</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>LAUNCH~1.EXE|Launch ESD.exe</td><td>0</td><td/><td>312917384</td></row>
+		<row><td>ID_STRING6</td><td>2052</td><td>LAUNCH~1.EXE|Launch ESD.exe</td><td>0</td><td/><td>312917384</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>2052</td><td>系统将不安装此功能。</td><td>0</td><td/><td>-1977171532</td></row>
 	</table>
 
@@ -3863,13 +3869,16 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>ESD.exe1_1CD5BD62000143D2AB24DD372B4A76AF.exe</td><td/><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe</td><td>0</td></row>
 		<row><td>ESD.exe1_3F72E62568D04BBC9334BF75E6843D2D.exe</td><td/><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe</td><td>0</td></row>
 		<row><td>ESD.exe_3821E1D39AFA491488A34D8018F5A509.exe</td><td/><td>D:\ESD\ESD\ESD\bin\Release\ESD.exe</td><td>0</td></row>
 		<row><td>ESD.exe_4A4FA6B1CAEC459C89A0ED9490401CC0.exe</td><td/><td>D:\ESD\ESD\ESD\bin\Release\ESD.exe</td><td>0</td></row>
 		<row><td>ESD.exe_5A0BF308C63748E488F8E0E8B2DCB755.exe</td><td/><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe</td><td>0</td></row>
+		<row><td>ESD.exe_B705C041CCB647D2B892AF38CB58B7DB.exe</td><td/><td>D:\Documents\Visual Studio 2013\Projects\ESD\ESD\bin\Release\ESD.exe</td><td>0</td></row>
+		<row><td>ESD.exe_CFBBC7D0CAA8437992B4782DD81D6991.exe</td><td/><td>C:\Users\Administrator\Desktop\ZhuoYue\ESD.exe</td><td>0</td></row>
 		<row><td>ESD.vshost.exe1_32A80D044EEA47608A1F4E19F603248D.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
 		<row><td>ESD.vshost.exe_F122809459BA44CFB2714AD97F3ED1C6.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\GenericExe.ico</td><td>0</td></row>
-		<row><td>UNINST_Uninstall_Z_988D9853E535481E94ACDF0B0A2F1345.exe</td><td/><td>D:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
+		<row><td>UNINST_Uninstall_Z_6C366361972840E896CD9547A8BDA995.exe</td><td/><td>E:\Program Files (x86)\InstallShield\2015LE\Redist\Language Independent\OS Independent\uninstall.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4377,7 +4386,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>ProductCode</td><td>{E9439FBE-A71D-4246-8E45-778238575E35}</td><td/></row>
 		<row><td>ProductName</td><td>ZhuoYue</td><td/></row>
-		<row><td>ProductVersion</td><td>1.0.0</td><td/></row>
+		<row><td>ProductVersion</td><td>1.0.1</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4454,8 +4463,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>ESD.exe</td><td>ESD.exe</td><td/><td>zhuoyue</td><td>2</td></row>
-		<row><td>UNINST_Uninstall_ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>zhuoyue1</td><td>2</td></row>
+		<row><td>ESD.exe</td><td>ESD.exe</td><td/><td>zhuoyue2</td><td>2</td></row>
+		<row><td>UNINST_Uninstall_ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td/><td>zhuoyue2</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4541,9 +4550,9 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>ESD.exe</td><td>zhuoyue</td><td>##IDS_SHORTCUT_DISPLAY_NAME4##</td><td>ESD.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ESD.exe_5A0BF308C63748E488F8E0E8B2DCB755.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>ESD.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME4##</td><td>ESD.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ESD.exe1_3F72E62568D04BBC9334BF75E6843D2D.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>UNINST_Uninstall_ZhuoYue</td><td>zhuoyue1</td><td>UNINST|Uninstall ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {E9439FBE-A71D-4246-8E45-778238575E35}</td><td/><td/><td>UNINST_Uninstall_Z_988D9853E535481E94ACDF0B0A2F1345.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ESD.exe</td><td>zhuoyue2</td><td>##IDS_SHORTCUT_DISPLAY_NAME6##</td><td>ESD.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ESD.exe_CFBBC7D0CAA8437992B4782DD81D6991.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>ESD.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME6##</td><td>ESD.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>ESD.exe1_1CD5BD62000143D2AB24DD372B4A76AF.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>UNINST_Uninstall_ZhuoYue</td><td>zhuoyue2</td><td>UNINST|Uninstall ZhuoYue</td><td>IS_ININSTALL_SHORTCUT</td><td>[SystemFolder]msiexec.exe</td><td>/x {E9439FBE-A71D-4246-8E45-778238575E35}</td><td/><td/><td>UNINST_Uninstall_Z_6C366361972840E896CD9547A8BDA995.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

@@ -337,7 +337,8 @@ namespace ESD
                 {
                     work_voltage =  "" + BitConverter.ToInt16(tmp, 0);
                 }
-                 
+
+                work_voltage = Convert.ToString(int.Parse(work_voltage) / 1000); 
 
                 string fan_speed = "" + data_real[12];
 
@@ -481,6 +482,8 @@ namespace ESD
                 if (handler != null && handler.isConnected())
                 {
                     handler.SendData(DataSent.DeleteDevice(lab_SNID.Text,addr_Short,addr_IEEE,endpoint));
+                    FanList.Remove(addr_Short);
+                    Refresh_FanList();
                 }
             }
         }
