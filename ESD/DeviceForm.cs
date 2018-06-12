@@ -173,5 +173,29 @@ namespace ESD
             dev_Name = lab_devName.Text;
             DialogResult = DialogResult.OK;
         }
+
+        private void btn_ACOpen_Click(object sender, EventArgs e)   //开启自动清洁
+        {
+            if (MainForm.handler != null && MainForm.handler.isConnected())
+            {
+                MainForm.handler.SendData(DataSent.SetSpeed(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_interval.Value)));
+            }
+        }
+
+        private void btn_ACClose_Click(object sender, EventArgs e)  //关闭自动清洁
+        {
+            if (MainForm.handler != null && MainForm.handler.isConnected())
+            {
+                MainForm.handler.SendData(DataSent.SetSpeed(gw_SN, addr_Short, endpoint, 0));
+            }
+        }
+
+        private void btn_SetAlarmV_Click(object sender, EventArgs e)    //设置报警电压
+        {
+            if (MainForm.handler != null && MainForm.handler.isConnected())
+            {
+                MainForm.handler.SendData(DataSent.SetSpeed(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_alarmV.Value)));
+            }
+        }
     }
 }

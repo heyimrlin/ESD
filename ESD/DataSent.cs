@@ -118,5 +118,45 @@ namespace ESD
 
             return data_sent;
         }
+
+        public static byte[] SetAutoClean(string gw_SN, string addr_Short, string endpoint, int data)   //设置自动清洁
+        {
+            string tmp = "";
+            //byte[] data_tmp = null;
+            byte[] data_sent = null;
+
+            gw_SN = gw_SN.Substring(6, 2) + gw_SN.Substring(4, 2) + gw_SN.Substring(2, 2) + gw_SN.Substring(0, 2);
+            //byte[] aShort = System.Text.Encoding.Default.GetBytes(addr_Short);
+            //byte[] ePoint = System.Text.Encoding.Default.GetBytes(endpoint);
+
+            //tmp = "1600" + gw_SN + "FEA70D";
+            //data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
+            //tmp = "0307006807002806"+data.ToString("X2")+(data+53).ToString("X2");
+            //data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
+            tmp = "1600" + gw_SN + "FEA70D" + addr_Short + endpoint + "0307006807002908" + data.ToString("X2") + (data + 56).ToString("X2");
+            data_sent = Utils.HexstrToByte(tmp);
+
+            return data_sent;
+        }
+
+        public static byte[] SetAlarmVoltage(string gw_SN, string addr_Short, string endpoint, int data)    //设置报警电压
+        {
+            string tmp = "";
+            //byte[] data_tmp = null;
+            byte[] data_sent = null;
+
+            gw_SN = gw_SN.Substring(6, 2) + gw_SN.Substring(4, 2) + gw_SN.Substring(2, 2) + gw_SN.Substring(0, 2);
+            //byte[] aShort = System.Text.Encoding.Default.GetBytes(addr_Short);
+            //byte[] ePoint = System.Text.Encoding.Default.GetBytes(endpoint);
+
+            //tmp = "1600" + gw_SN + "FEA70D";
+            //data_tmp = Utils.HexstrToByte(tmp).Concat(aShort).Concat(ePoint).ToArray();
+            //tmp = "0307006807002806"+data.ToString("X2")+(data+53).ToString("X2");
+            //data_sent = data_tmp.Concat(Utils.HexstrToByte(tmp)).ToArray();
+            tmp = "1600" + gw_SN + "FEA70D" + addr_Short + endpoint + "0307006807002909" + data.ToString("X2") + (data + 57).ToString("X2");
+            data_sent = Utils.HexstrToByte(tmp);
+
+            return data_sent;
+        }
     }
 }

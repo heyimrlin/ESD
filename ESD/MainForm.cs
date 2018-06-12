@@ -290,7 +290,7 @@ namespace ESD
 
         private void Parse_DeviceState(byte[] data) //处理返回的设备状态数据
         {
-            if (data.Length != 31)
+            if (data.Length != 35)
             {
                 return;
             }
@@ -338,9 +338,11 @@ namespace ESD
                     work_voltage =  "" + BitConverter.ToInt16(tmp, 0);
                 }
 
-                work_voltage = Convert.ToString(int.Parse(work_voltage) / 1000); 
+                work_voltage = Convert.ToString(int.Parse(work_voltage) / 1000);
 
                 string fan_speed = "" + data_real[12];
+
+
 
                 if (FanList.Keys.Contains<string>(addr_short)==true)
                 {
