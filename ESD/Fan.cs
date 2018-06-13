@@ -15,6 +15,20 @@ namespace ESD
             set { Device_ID = value; }
         }
 
+        private string AutoClean_Interval;  //自动清洁间隔
+        public string AutoCleanInterval
+        {
+            get { return AutoClean_Interval; }
+            set { AutoClean_Interval = value; }
+        }
+
+        private string Alarm_Voltage;   //报警电压
+        public string AlarmVoltage
+        {
+            get { return Alarm_Voltage; }
+            set { Alarm_Voltage = value; }
+        }
+
         private string Device_Name; //设备名
         public string DeviceName
         {

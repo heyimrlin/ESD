@@ -13,7 +13,8 @@ namespace ESD
     public partial class DeviceForm : Form
     {
         public static string gw_SN, addr_Short, endpoint;
-        public static string dev_Name,hard_Version,soft_Version,work_Time,bal_Voltage,fan_Speed;
+        public static string dev_Name, hard_Version, soft_Version, work_Time, bal_Voltage, fan_Speed;
+        public static string autoClean_Interval, alarm_Voltage;
         public static string work_Mode, fan_State, pressure_State;
         public static string error_Voltage, error_Electric, error_Bal, error_Fan;
 
@@ -44,6 +45,8 @@ namespace ESD
             lab_workTime.Text = work_Time;
             lab_balVoltage.Text = bal_Voltage;
             lab_speed.Text = fan_Speed;
+            lab_interval.Text = autoClean_Interval;
+            lab_alarmvoltage.Text = alarm_Voltage;
 
             switch (work_Mode)
             {
@@ -178,7 +181,7 @@ namespace ESD
         {
             if (MainForm.handler != null && MainForm.handler.isConnected())
             {
-                MainForm.handler.SendData(DataSent.SetSpeed(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_interval.Value)));
+                MainForm.handler.SendData(DataSent.SetAutoClean(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_interval.Value)));
             }
         }
 
@@ -186,7 +189,7 @@ namespace ESD
         {
             if (MainForm.handler != null && MainForm.handler.isConnected())
             {
-                MainForm.handler.SendData(DataSent.SetSpeed(gw_SN, addr_Short, endpoint, 0));
+                MainForm.handler.SendData(DataSent.SetAutoClean(gw_SN, addr_Short, endpoint, 0));
             }
         }
 
@@ -194,7 +197,7 @@ namespace ESD
         {
             if (MainForm.handler != null && MainForm.handler.isConnected())
             {
-                MainForm.handler.SendData(DataSent.SetSpeed(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_alarmV.Value)));
+                MainForm.handler.SendData(DataSent.SetAlarmVoltage(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_alarmV.Value)));
             }
         }
     }

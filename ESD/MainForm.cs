@@ -13,6 +13,11 @@ using System.Xml;
 
 namespace ESD
 {
+    public struct CustomNode
+    {
+        public string Addr, DeviceID, Name;
+    }
+
     public partial class MainForm : Form
     {
         UDPBroadcast broadcast = null;
@@ -230,6 +235,8 @@ namespace ESD
             newFan.FanError = "无";
             newFan.PressureState = "未知";
             newFan.FanState = "未知";
+            newFan.AutoCleanInterval = "未知";
+            newFan.AlarmVoltage = "未知";
 
             //短地址
             byte[] tmp = data.Skip(2).Take(2).ToArray();
@@ -237,14 +244,21 @@ namespace ESD
             string addr_short = tmp[0].ToString("X2") + tmp[1].ToString("X2");
             newFan.ShorAddress = addr_short;
 
+            //匹配已保存的设备名
             XmlElement list = document.DocumentElement;
-            foreach (XmlNode fan in list.ChildNodes)
+            XmlNodeList group = list.ChildNodes;
+            bool flag = true;
+            foreach (XmlElement gp in group)
             {
-                string addr = fan.FirstChild.InnerText;
-                string name = fan.LastChild.InnerText;
-                if (addr.Equals(addr_short))
+                foreach (XmlNode fan in gp.ChildNodes)
                 {
-                    newFan.DeviceName = name;
+                    string addr = fan.FirstChild.InnerText;
+                    string name = fan.LastChild.InnerText;
+                    if (addr.Equals(addr_short))
+                    {
+                        newFan.DeviceName = name;
+                        flag = false;
+                    }
                 }
             }
 
@@ -266,6 +280,32 @@ namespace ESD
             string addr_ieee = tmp[0].ToString("X2") + tmp[1].ToString("X2") + tmp[2].ToString("X2") + tmp[3].ToString("X2") +
                 tmp[4].ToString("X2") + tmp[5].ToString("X2") + tmp[6].ToString("X2") + tmp[7].ToString("X2");
             newFan.IEEEAddress = addr_ieee;
+
+            //若未在数据库中保存过设备，则添加
+            if (flag)
+            {
+                foreach (XmlElement xe in group)
+                {
+                    if (xe.GetAttribute("name").Equals("未分组"))
+                    {
+                        XmlElement fan = document.CreateElement("fan");
+                        XmlElement addr = document.CreateElement("addr");
+                        addr.InnerText = addr_short;
+                        XmlElement devid = document.CreateElement("deviceid");
+                        devid.InnerText = device_id;
+                        XmlElement name = document.CreateElement("name");
+                        name.InnerText = "新风机设备";
+
+                        fan.AppendChild(addr);
+                        fan.AppendChild(devid);
+                        fan.AppendChild(name);
+
+                        xe.AppendChild(fan);
+
+                        document.Save(Application.StartupPath + "\\DeviceName.xml");
+                    }
+                }
+            }
 
             if (!FanList.Keys.Contains(addr_short))
             {
@@ -314,18 +354,22 @@ namespace ESD
             byte[] data_real;
             if (data[12] == 0x68 && data[15] == 0x80 && data[16] == 0x2F)   //设备状态数据
             {
-                data_real = data.Skip(17).Take(13).ToArray();
+                data_real = data.Skip(17).Take(17).ToArray();
 
+                //版本信息
                 string ver_hard = "" + data_real[0];
                 string ver_soft = "" + data_real[1];
 
+                //运行时间
                 tmp = data_real.Skip(3).Take(2).ToArray();
                 string work_time = ""+BitConverter.ToInt16(tmp, 0);
 
+                //风机运行状态
                 string work_mode = (data_real[9]&1)==1?"自动":"手动";
                 string fan_state = (data_real[9] & 64) == 64 ? "打开" : "关闭";
                 string pressure_state = (data_real[9] & 128) == 128 ? "打开" : "关闭";
 
+                //工作电压
                 tmp = data_real.Skip(10).Take(2).ToArray();
                 string work_voltage="";
                 if ((tmp[1] & 128) == 128)
@@ -340,9 +384,18 @@ namespace ESD
 
                 work_voltage = Convert.ToString(int.Parse(work_voltage) / 1000);
 
+                //离子风机风速
                 string fan_speed = "" + data_real[12];
 
+                //设备ID
+                tmp = data_real.Skip(13).Take(2).ToArray();
+                string device_id = tmp[0].ToString("X2") + tmp[1].ToString("X2");
 
+                //自动清洁间隔
+                string autoclean_interval = "" + data_real[15];
+
+                //报警电压
+                string alarm_voltage = "" + data_real[16];
 
                 if (FanList.Keys.Contains<string>(addr_short)==true)
                 {
@@ -352,6 +405,9 @@ namespace ESD
                     fan.FanState = fan_state;
                     fan.PressureState = pressure_state;
                     fan.BalanceVoltage = work_voltage;
+                    fan.DeviceID = device_id;
+                    fan.AutoCleanInterval = autoclean_interval;
+                    fan.AlarmVoltage = alarm_voltage;
 
                     FanList[addr_short] = fan;
 
@@ -365,6 +421,8 @@ namespace ESD
                     DeviceForm.work_Time = work_time;
                     DeviceForm.bal_Voltage = work_voltage;
                     DeviceForm.fan_Speed = fan_speed;
+                    DeviceForm.autoClean_Interval = autoclean_interval;
+                    DeviceForm.alarm_Voltage = alarm_voltage;
                     DeviceForm.work_Mode = work_mode;
                     DeviceForm.fan_State = fan_state;
                     DeviceForm.pressure_State = pressure_state;
@@ -376,6 +434,7 @@ namespace ESD
                 string device_electric = (data[17] & 2) == 2 ? "异常" : "正常";
                 string balance_voltage = (data[17] & 4) == 4 ? "异常" : "正常";
                 string fan_error = (data[17] & 8) == 8 ? "异常" : "正常";
+                string device_id = data[19].ToString("X2") + data[20].ToString("X2");
 
                 if (FanList.Keys.Contains(addr_short))
                 {
@@ -384,6 +443,7 @@ namespace ESD
 
                     fan.PressureError = device_voltage;
                     fan.FanError = fan_error;
+                    fan.DeviceID = device_id;
 
                     FanList[addr_short] = fan;
 
@@ -518,39 +578,70 @@ namespace ESD
 
                         //在修改风机设备的名称之后将数据保存到xml文件中
                         XmlElement list = document.DocumentElement;
-                        bool flag = true;
-                        foreach (XmlNode nfan in list.ChildNodes)
+                        XmlNodeList group = list.ChildNodes;
+                        foreach (XmlElement gp in group)
                         {
-                            string addr = nfan.FirstChild.InnerText;
-                            string name = nfan.LastChild.InnerText;
-
-                            if (addr.Equals(DeviceForm.addr_Short))
+                            foreach (XmlElement nfan in gp)
                             {
-                                nfan.LastChild.InnerText = DeviceForm.dev_Name;
-                                flag = false;
+                                string addr = nfan.FirstChild.InnerText;
+                                string name = nfan.LastChild.InnerText;
+
+                                if (addr.Equals(DeviceForm.addr_Short))
+                                {
+                                    nfan.LastChild.InnerText = DeviceForm.dev_Name;
+                                    document.Save(Application.StartupPath + "\\DeviceName.xml");
+                                }
                             }
-                        }
-
-                        if (flag)
-                        {
-                            XmlElement nFan = document.CreateElement("fan");
-                            XmlElement fAddr = document.CreateElement("addr");
-                            fAddr.InnerText = DeviceForm.addr_Short;
-                            XmlElement fName = document.CreateElement("name");
-                            fName.InnerText = DeviceForm.dev_Name;
-
-                            nFan.AppendChild(fAddr);
-                            nFan.AppendChild(fName);
-
-                            list.AppendChild(nFan);
-
-                            document.Save(Application.StartupPath + "\\DeviceName.xml");
                         }
 
                         MessageBox.Show("修改成功！", "操作提示");
                     }
                 }
             }
+        }
+
+        private void cMenu_Group_Click(object sender, EventArgs e)  //分组操作
+        {
+            panel_group.BringToFront();
+            Refresh_GroupList();
+        }
+
+        private void Refresh_GroupList()    //刷新分组列表
+        {
+            XmlElement list = document.DocumentElement;
+            XmlNodeList group = list.ChildNodes;
+
+            TreeNode root = tree_devices.Nodes[0];
+            root.Nodes.Clear();
+
+            foreach (XmlElement gp in group)
+            {
+                string gp_name = gp.GetAttribute("name");
+                TreeNode[] children = new TreeNode[gp.ChildNodes.Count];
+                for (int i = 0; i < gp.ChildNodes.Count; i++)
+                {
+                    XmlNode fan = gp.ChildNodes.Item(i);
+
+                    CustomNode node = new CustomNode();
+                    node.Addr = fan.FirstChild.InnerText;
+                    node.DeviceID = fan.ChildNodes[1].InnerText;
+                    node.Name = fan.LastChild.InnerText;
+
+                    TreeNode newFan = new TreeNode(node.Name);
+                    newFan.Tag = node;
+
+                    children[i] = newFan;
+                }
+                TreeNode newGroup = new TreeNode(gp_name, children);
+                root.Nodes.Add(newGroup);
+            }
+
+            tree_devices.ExpandAll();
+        }
+
+        private void btn_back_Click(object sender, EventArgs e) //分组操作——返回
+        {
+            dgv_fanList.BringToFront();
         }
     }
 }
