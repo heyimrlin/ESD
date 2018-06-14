@@ -1,37 +1,35 @@
 <?xml version="1.0" encoding="gbk"?>
 <list>
   <group name="未分组">
+  </group>
+  <group name="产线A">
+  </group>
+  <group name="产线B">
+  </group>
+  <group name="产线C">
+  </group>
+  <group name="产线D">
+  </group>
+  <group name="产线E">
     <fan>
       <addr>3412</addr>
       <deviceid>0402</deviceid>
-      <name>分机A</name>
+      <name>风机A</name>
     </fan>
     <fan>
-      <addr>7856</addr>
+      <addr>5678</addr>
       <deviceid>0401</deviceid>
-      <name>分机B</name>
+      <name>风机B</name>
     </fan>
-    <fan>
-      <addr>5634</addr>
-      <deviceid>0403</deviceid>
-      <name>分机C</name>
-    </fan>
-  </group>
-  <group name="精英组">
     <fan>
       <addr>1111</addr>
       <deviceid>0501</deviceid>
-      <name>分机D</name>
+      <name>新风机A</name>
     </fan>
     <fan>
       <addr>2222</addr>
-      <deviceid>0502</deviceid>
-      <name>分机E</name>
-    </fan>
-    <fan>
-      <addr>3333</addr>
-      <deviceid>0503</deviceid>
-      <name>分机F</name>
+      <deviceid>0501</deviceid>
+      <name>新风机B</name>
     </fan>
   </group>
 </list>

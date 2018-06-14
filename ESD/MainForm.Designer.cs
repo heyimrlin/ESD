@@ -40,6 +40,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("设备分组列表");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_gwIP = new CCWin.SkinControl.SkinDataGridView();
             this.Col_SNID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_gwIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,10 +91,36 @@
             this.Timer_Search = new System.Windows.Forms.Timer(this.components);
             this.Timer_Received = new System.Windows.Forms.Timer(this.components);
             this.panel_group = new CCWin.SkinControl.SkinPanel();
-            this.tree_devices = new CCWin.SkinControl.SkinTreeView();
-            this.btn_back = new CCWin.SkinControl.SkinButton();
+            this.btn_del_group = new CCWin.SkinControl.SkinButton();
             this.btn_new_group = new CCWin.SkinControl.SkinButton();
-            this.btn_edit_group = new CCWin.SkinControl.SkinButton();
+            this.btn_back = new CCWin.SkinControl.SkinButton();
+            this.tree_devices = new CCWin.SkinControl.SkinTreeView();
+            this.skinLabel3 = new CCWin.SkinControl.SkinLabel();
+            this.lab_groupName = new CCWin.SkinControl.SkinTextBox();
+            this.btn_gn_save = new CCWin.SkinControl.SkinButton();
+            this.dgv_fanList_Group = new CCWin.SkinControl.SkinDataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel_toolbar = new CCWin.SkinControl.SkinPanel();
+            this.btn_SetAlarmV = new CCWin.SkinControl.SkinButton();
+            this.num_alarmV = new CCWin.SkinControl.SkinNumericUpDown();
+            this.skinLabel23 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel22 = new CCWin.SkinControl.SkinLabel();
+            this.btn_ACClose = new CCWin.SkinControl.SkinButton();
+            this.btn_ACOpen = new CCWin.SkinControl.SkinButton();
+            this.num_interval = new CCWin.SkinControl.SkinNumericUpDown();
+            this.skinLabel21 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel20 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel18 = new CCWin.SkinControl.SkinLabel();
+            this.lab_previous = new CCWin.SkinControl.SkinLabel();
+            this.cMenu_GroupFanList = new CCWin.SkinControl.SkinContextMenuStrip();
+            this.cMenu_AddTo = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_gwIP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList)).BeginInit();
             this.cMenu_FanList.SuspendLayout();
@@ -98,6 +128,11 @@
             this.menu.SuspendLayout();
             this.StatusBar.SuspendLayout();
             this.panel_group.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList_Group)).BeginInit();
+            this.panel_toolbar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_alarmV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_interval)).BeginInit();
+            this.cMenu_GroupFanList.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgv_gwIP
@@ -702,10 +737,16 @@
             // 
             this.panel_group.BackColor = System.Drawing.Color.Transparent;
             this.panel_group.BorderColor = System.Drawing.Color.Black;
-            this.panel_group.Controls.Add(this.btn_edit_group);
+            this.panel_group.Controls.Add(this.lab_previous);
+            this.panel_group.Controls.Add(this.dgv_fanList_Group);
+            this.panel_group.Controls.Add(this.btn_gn_save);
+            this.panel_group.Controls.Add(this.lab_groupName);
+            this.panel_group.Controls.Add(this.skinLabel3);
+            this.panel_group.Controls.Add(this.btn_del_group);
             this.panel_group.Controls.Add(this.btn_new_group);
             this.panel_group.Controls.Add(this.btn_back);
             this.panel_group.Controls.Add(this.tree_devices);
+            this.panel_group.Controls.Add(this.panel_toolbar);
             this.panel_group.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.panel_group.DownBack = null;
             this.panel_group.Location = new System.Drawing.Point(427, 85);
@@ -715,16 +756,39 @@
             this.panel_group.Size = new System.Drawing.Size(861, 549);
             this.panel_group.TabIndex = 71;
             // 
-            // tree_devices
+            // btn_del_group
             // 
-            this.tree_devices.Location = new System.Drawing.Point(8, 5);
-            this.tree_devices.Name = "tree_devices";
-            treeNode1.Name = "节点0";
-            treeNode1.Text = "设备分组列表";
-            this.tree_devices.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
-            this.tree_devices.Size = new System.Drawing.Size(222, 541);
-            this.tree_devices.TabIndex = 0;
+            this.btn_del_group.AutoSize = true;
+            this.btn_del_group.BackColor = System.Drawing.Color.Transparent;
+            this.btn_del_group.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_del_group.DownBack = null;
+            this.btn_del_group.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_del_group.Location = new System.Drawing.Point(320, 15);
+            this.btn_del_group.MouseBack = null;
+            this.btn_del_group.Name = "btn_del_group";
+            this.btn_del_group.NormlBack = null;
+            this.btn_del_group.Size = new System.Drawing.Size(84, 31);
+            this.btn_del_group.TabIndex = 9;
+            this.btn_del_group.Text = "删除分组";
+            this.btn_del_group.UseVisualStyleBackColor = false;
+            this.btn_del_group.Click += new System.EventHandler(this.btn_del_group_Click);
+            // 
+            // btn_new_group
+            // 
+            this.btn_new_group.AutoSize = true;
+            this.btn_new_group.BackColor = System.Drawing.Color.Transparent;
+            this.btn_new_group.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_new_group.DownBack = null;
+            this.btn_new_group.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_new_group.Location = new System.Drawing.Point(230, 15);
+            this.btn_new_group.MouseBack = null;
+            this.btn_new_group.Name = "btn_new_group";
+            this.btn_new_group.NormlBack = null;
+            this.btn_new_group.Size = new System.Drawing.Size(84, 31);
+            this.btn_new_group.TabIndex = 8;
+            this.btn_new_group.Text = "新建分组";
+            this.btn_new_group.UseVisualStyleBackColor = false;
+            this.btn_new_group.Click += new System.EventHandler(this.btn_new_group_Click);
             // 
             // btn_back
             // 
@@ -733,7 +797,7 @@
             this.btn_back.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.btn_back.DownBack = null;
             this.btn_back.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_back.Location = new System.Drawing.Point(795, 506);
+            this.btn_back.Location = new System.Drawing.Point(800, 15);
             this.btn_back.MouseBack = null;
             this.btn_back.Name = "btn_back";
             this.btn_back.NormlBack = null;
@@ -743,37 +807,430 @@
             this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
-            // btn_new_group
+            // tree_devices
             // 
-            this.btn_new_group.AutoSize = true;
-            this.btn_new_group.BackColor = System.Drawing.Color.Transparent;
-            this.btn_new_group.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.btn_new_group.DownBack = null;
-            this.btn_new_group.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_new_group.Location = new System.Drawing.Point(252, 506);
-            this.btn_new_group.MouseBack = null;
-            this.btn_new_group.Name = "btn_new_group";
-            this.btn_new_group.NormlBack = null;
-            this.btn_new_group.Size = new System.Drawing.Size(84, 31);
-            this.btn_new_group.TabIndex = 8;
-            this.btn_new_group.Text = "新建分组";
-            this.btn_new_group.UseVisualStyleBackColor = false;
+            this.tree_devices.ContextMenuStrip = this.cMenu_GroupFanList;
+            this.tree_devices.Location = new System.Drawing.Point(4, 5);
+            this.tree_devices.Name = "tree_devices";
+            treeNode1.Name = "节点0";
+            treeNode1.Text = "设备分组列表";
+            this.tree_devices.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            this.tree_devices.Size = new System.Drawing.Size(222, 541);
+            this.tree_devices.TabIndex = 0;
+            this.tree_devices.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tree_devices_AfterSelect);
             // 
-            // btn_edit_group
+            // skinLabel3
             // 
-            this.btn_edit_group.AutoSize = true;
-            this.btn_edit_group.BackColor = System.Drawing.Color.Transparent;
-            this.btn_edit_group.ControlState = CCWin.SkinClass.ControlState.Normal;
-            this.btn_edit_group.DownBack = null;
-            this.btn_edit_group.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btn_edit_group.Location = new System.Drawing.Point(365, 506);
-            this.btn_edit_group.MouseBack = null;
-            this.btn_edit_group.Name = "btn_edit_group";
-            this.btn_edit_group.NormlBack = null;
-            this.btn_edit_group.Size = new System.Drawing.Size(84, 31);
-            this.btn_edit_group.TabIndex = 9;
-            this.btn_edit_group.Text = "编辑分组";
-            this.btn_edit_group.UseVisualStyleBackColor = false;
+            this.skinLabel3.AutoSize = true;
+            this.skinLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel3.BorderColor = System.Drawing.Color.White;
+            this.skinLabel3.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel3.Location = new System.Drawing.Point(442, 21);
+            this.skinLabel3.Name = "skinLabel3";
+            this.skinLabel3.Size = new System.Drawing.Size(58, 21);
+            this.skinLabel3.TabIndex = 11;
+            this.skinLabel3.Text = "组名：";
+            // 
+            // lab_groupName
+            // 
+            this.lab_groupName.BackColor = System.Drawing.Color.Transparent;
+            this.lab_groupName.DownBack = null;
+            this.lab_groupName.Icon = null;
+            this.lab_groupName.IconIsButton = false;
+            this.lab_groupName.IconMouseState = CCWin.SkinClass.ControlState.Normal;
+            this.lab_groupName.IsPasswordChat = '\0';
+            this.lab_groupName.IsSystemPasswordChar = false;
+            this.lab_groupName.Lines = new string[0];
+            this.lab_groupName.Location = new System.Drawing.Point(497, 17);
+            this.lab_groupName.Margin = new System.Windows.Forms.Padding(0);
+            this.lab_groupName.MaxLength = 32767;
+            this.lab_groupName.MinimumSize = new System.Drawing.Size(28, 28);
+            this.lab_groupName.MouseBack = null;
+            this.lab_groupName.MouseState = CCWin.SkinClass.ControlState.Normal;
+            this.lab_groupName.Multiline = false;
+            this.lab_groupName.Name = "lab_groupName";
+            this.lab_groupName.NormlBack = null;
+            this.lab_groupName.Padding = new System.Windows.Forms.Padding(5);
+            this.lab_groupName.ReadOnly = false;
+            this.lab_groupName.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.lab_groupName.Size = new System.Drawing.Size(125, 28);
+            // 
+            // 
+            // 
+            this.lab_groupName.SkinTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lab_groupName.SkinTxt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lab_groupName.SkinTxt.Font = new System.Drawing.Font("微软雅黑", 9.75F);
+            this.lab_groupName.SkinTxt.Location = new System.Drawing.Point(5, 5);
+            this.lab_groupName.SkinTxt.Name = "BaseText";
+            this.lab_groupName.SkinTxt.Size = new System.Drawing.Size(115, 18);
+            this.lab_groupName.SkinTxt.TabIndex = 0;
+            this.lab_groupName.SkinTxt.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.lab_groupName.SkinTxt.WaterText = "";
+            this.lab_groupName.TabIndex = 39;
+            this.lab_groupName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.lab_groupName.WaterColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
+            this.lab_groupName.WaterText = "";
+            this.lab_groupName.WordWrap = true;
+            // 
+            // btn_gn_save
+            // 
+            this.btn_gn_save.AutoSize = true;
+            this.btn_gn_save.BackColor = System.Drawing.Color.Transparent;
+            this.btn_gn_save.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_gn_save.DownBack = null;
+            this.btn_gn_save.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btn_gn_save.Location = new System.Drawing.Point(635, 15);
+            this.btn_gn_save.MouseBack = null;
+            this.btn_gn_save.Name = "btn_gn_save";
+            this.btn_gn_save.NormlBack = null;
+            this.btn_gn_save.Size = new System.Drawing.Size(52, 31);
+            this.btn_gn_save.TabIndex = 40;
+            this.btn_gn_save.Text = "保存";
+            this.btn_gn_save.UseVisualStyleBackColor = false;
+            this.btn_gn_save.Click += new System.EventHandler(this.btn_gn_save_Click);
+            // 
+            // dgv_fanList_Group
+            // 
+            this.dgv_fanList_Group.AllowUserToAddRows = false;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(246)))), ((int)(((byte)(253)))));
+            this.dgv_fanList_Group.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.dgv_fanList_Group.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dgv_fanList_Group.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dgv_fanList_Group.ColumnFont = null;
+            this.dgv_fanList_Group.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(246)))), ((int)(((byte)(239)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_fanList_Group.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            this.dgv_fanList_Group.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_fanList_Group.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11});
+            this.dgv_fanList_Group.ColumnSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_fanList_Group.ContextMenuStrip = this.cMenu_FanList;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(188)))), ((int)(((byte)(240)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_fanList_Group.DefaultCellStyle = dataGridViewCellStyle12;
+            this.dgv_fanList_Group.EnableHeadersVisualStyles = false;
+            this.dgv_fanList_Group.GridColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.dgv_fanList_Group.HeadFont = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.dgv_fanList_Group.HeadSelectForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_fanList_Group.Location = new System.Drawing.Point(227, 52);
+            this.dgv_fanList_Group.Name = "dgv_fanList_Group";
+            this.dgv_fanList_Group.ReadOnly = true;
+            this.dgv_fanList_Group.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgv_fanList_Group.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgv_fanList_Group.RowsDefaultCellStyle = dataGridViewCellStyle13;
+            this.dgv_fanList_Group.RowTemplate.Height = 23;
+            this.dgv_fanList_Group.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_fanList_Group.Size = new System.Drawing.Size(628, 406);
+            this.dgv_fanList_Group.TabIndex = 45;
+            this.dgv_fanList_Group.TitleBack = null;
+            this.dgv_fanList_Group.TitleBackColorBegin = System.Drawing.Color.White;
+            this.dgv_fanList_Group.TitleBackColorEnd = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(196)))), ((int)(((byte)(242)))));
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Device_ID";
+            this.dataGridViewTextBoxColumn1.HeaderText = "风机ID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 95;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Device_Name";
+            this.dataGridViewTextBoxColumn2.HeaderText = "设备名";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Width = 120;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "State_Pressure";
+            this.dataGridViewTextBoxColumn4.HeaderText = "高压状态";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 115;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "State_Fan";
+            this.dataGridViewTextBoxColumn5.HeaderText = "风扇状态";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Width = 115;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Voltage_Balance";
+            this.dataGridViewTextBoxColumn6.HeaderText = "平衡电压(V)";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Width = 140;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.DataPropertyName = "Address_Short";
+            this.dataGridViewTextBoxColumn9.HeaderText = "短地址";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Address_IEEE";
+            this.dataGridViewTextBoxColumn10.HeaderText = "IEEE地址";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
+            this.dataGridViewTextBoxColumn10.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.DataPropertyName = "endpoint";
+            this.dataGridViewTextBoxColumn11.HeaderText = "端口";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            this.dataGridViewTextBoxColumn11.ReadOnly = true;
+            this.dataGridViewTextBoxColumn11.Visible = false;
+            // 
+            // panel_toolbar
+            // 
+            this.panel_toolbar.BackColor = System.Drawing.Color.Transparent;
+            this.panel_toolbar.Controls.Add(this.btn_SetAlarmV);
+            this.panel_toolbar.Controls.Add(this.num_alarmV);
+            this.panel_toolbar.Controls.Add(this.skinLabel23);
+            this.panel_toolbar.Controls.Add(this.skinLabel22);
+            this.panel_toolbar.Controls.Add(this.btn_ACClose);
+            this.panel_toolbar.Controls.Add(this.btn_ACOpen);
+            this.panel_toolbar.Controls.Add(this.num_interval);
+            this.panel_toolbar.Controls.Add(this.skinLabel21);
+            this.panel_toolbar.Controls.Add(this.skinLabel20);
+            this.panel_toolbar.Controls.Add(this.skinLabel18);
+            this.panel_toolbar.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.panel_toolbar.DownBack = null;
+            this.panel_toolbar.Location = new System.Drawing.Point(227, 464);
+            this.panel_toolbar.MouseBack = null;
+            this.panel_toolbar.Name = "panel_toolbar";
+            this.panel_toolbar.NormlBack = null;
+            this.panel_toolbar.Size = new System.Drawing.Size(628, 82);
+            this.panel_toolbar.TabIndex = 56;
+            // 
+            // btn_SetAlarmV
+            // 
+            this.btn_SetAlarmV.AutoSize = true;
+            this.btn_SetAlarmV.BackColor = System.Drawing.Color.Transparent;
+            this.btn_SetAlarmV.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_SetAlarmV.DownBack = null;
+            this.btn_SetAlarmV.Location = new System.Drawing.Point(343, 3);
+            this.btn_SetAlarmV.MouseBack = null;
+            this.btn_SetAlarmV.Name = "btn_SetAlarmV";
+            this.btn_SetAlarmV.NormlBack = null;
+            this.btn_SetAlarmV.Size = new System.Drawing.Size(60, 35);
+            this.btn_SetAlarmV.TabIndex = 65;
+            this.btn_SetAlarmV.Text = "设置";
+            this.btn_SetAlarmV.UseVisualStyleBackColor = false;
+            // 
+            // num_alarmV
+            // 
+            this.num_alarmV.Location = new System.Drawing.Point(252, 4);
+            this.num_alarmV.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_alarmV.Name = "num_alarmV";
+            this.num_alarmV.Size = new System.Drawing.Size(56, 33);
+            this.num_alarmV.TabIndex = 63;
+            this.num_alarmV.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // skinLabel23
+            // 
+            this.skinLabel23.AutoSize = true;
+            this.skinLabel23.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel23.BorderColor = System.Drawing.Color.White;
+            this.skinLabel23.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel23.Location = new System.Drawing.Point(307, 8);
+            this.skinLabel23.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel23.Name = "skinLabel23";
+            this.skinLabel23.Size = new System.Drawing.Size(37, 25);
+            this.skinLabel23.TabIndex = 64;
+            this.skinLabel23.Text = "(V)";
+            // 
+            // skinLabel22
+            // 
+            this.skinLabel22.AutoSize = true;
+            this.skinLabel22.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel22.BorderColor = System.Drawing.Color.White;
+            this.skinLabel22.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel22.Location = new System.Drawing.Point(128, 8);
+            this.skinLabel22.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel22.Name = "skinLabel22";
+            this.skinLabel22.Size = new System.Drawing.Size(107, 25);
+            this.skinLabel22.TabIndex = 62;
+            this.skinLabel22.Text = "报警电压：";
+            // 
+            // btn_ACClose
+            // 
+            this.btn_ACClose.AutoSize = true;
+            this.btn_ACClose.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ACClose.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_ACClose.DownBack = null;
+            this.btn_ACClose.Location = new System.Drawing.Point(479, 45);
+            this.btn_ACClose.MouseBack = null;
+            this.btn_ACClose.Name = "btn_ACClose";
+            this.btn_ACClose.NormlBack = null;
+            this.btn_ACClose.Size = new System.Drawing.Size(60, 35);
+            this.btn_ACClose.TabIndex = 61;
+            this.btn_ACClose.Text = "关闭";
+            this.btn_ACClose.UseVisualStyleBackColor = false;
+            // 
+            // btn_ACOpen
+            // 
+            this.btn_ACOpen.AutoSize = true;
+            this.btn_ACOpen.BackColor = System.Drawing.Color.Transparent;
+            this.btn_ACOpen.ControlState = CCWin.SkinClass.ControlState.Normal;
+            this.btn_ACOpen.DownBack = null;
+            this.btn_ACOpen.Location = new System.Drawing.Point(408, 45);
+            this.btn_ACOpen.MouseBack = null;
+            this.btn_ACOpen.Name = "btn_ACOpen";
+            this.btn_ACOpen.NormlBack = null;
+            this.btn_ACOpen.Size = new System.Drawing.Size(60, 35);
+            this.btn_ACOpen.TabIndex = 60;
+            this.btn_ACOpen.Text = "开启";
+            this.btn_ACOpen.UseVisualStyleBackColor = false;
+            // 
+            // num_interval
+            // 
+            this.num_interval.Location = new System.Drawing.Point(294, 46);
+            this.num_interval.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.num_interval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_interval.Name = "num_interval";
+            this.num_interval.Size = new System.Drawing.Size(56, 33);
+            this.num_interval.TabIndex = 56;
+            this.num_interval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // skinLabel21
+            // 
+            this.skinLabel21.AutoSize = true;
+            this.skinLabel21.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel21.BorderColor = System.Drawing.Color.White;
+            this.skinLabel21.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel21.Location = new System.Drawing.Point(353, 50);
+            this.skinLabel21.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel21.Name = "skinLabel21";
+            this.skinLabel21.Size = new System.Drawing.Size(50, 25);
+            this.skinLabel21.TabIndex = 59;
+            this.skinLabel21.Text = "小时";
+            // 
+            // skinLabel20
+            // 
+            this.skinLabel20.AutoSize = true;
+            this.skinLabel20.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel20.BorderColor = System.Drawing.Color.White;
+            this.skinLabel20.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel20.Location = new System.Drawing.Point(247, 50);
+            this.skinLabel20.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel20.Name = "skinLabel20";
+            this.skinLabel20.Size = new System.Drawing.Size(50, 25);
+            this.skinLabel20.TabIndex = 58;
+            this.skinLabel20.Text = "每隔";
+            // 
+            // skinLabel18
+            // 
+            this.skinLabel18.AutoSize = true;
+            this.skinLabel18.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel18.BorderColor = System.Drawing.Color.White;
+            this.skinLabel18.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel18.Location = new System.Drawing.Point(90, 50);
+            this.skinLabel18.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel18.Name = "skinLabel18";
+            this.skinLabel18.Size = new System.Drawing.Size(145, 25);
+            this.skinLabel18.TabIndex = 57;
+            this.skinLabel18.Text = "自动清洁周期：";
+            // 
+            // lab_previous
+            // 
+            this.lab_previous.AutoSize = true;
+            this.lab_previous.BackColor = System.Drawing.Color.Transparent;
+            this.lab_previous.BorderColor = System.Drawing.Color.White;
+            this.lab_previous.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_previous.Location = new System.Drawing.Point(693, 24);
+            this.lab_previous.Name = "lab_previous";
+            this.lab_previous.Size = new System.Drawing.Size(81, 17);
+            this.lab_previous.TabIndex = 57;
+            this.lab_previous.Text = "lab_previous";
+            this.lab_previous.Visible = false;
+            // 
+            // cMenu_GroupFanList
+            // 
+            this.cMenu_GroupFanList.Arrow = System.Drawing.Color.Black;
+            this.cMenu_GroupFanList.Back = System.Drawing.Color.White;
+            this.cMenu_GroupFanList.BackRadius = 4;
+            this.cMenu_GroupFanList.Base = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(200)))), ((int)(((byte)(254)))));
+            this.cMenu_GroupFanList.DropDownImageSeparator = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(197)))), ((int)(((byte)(197)))));
+            this.cMenu_GroupFanList.Fore = System.Drawing.Color.Black;
+            this.cMenu_GroupFanList.HoverFore = System.Drawing.Color.White;
+            this.cMenu_GroupFanList.ItemAnamorphosis = true;
+            this.cMenu_GroupFanList.ItemBorder = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.cMenu_GroupFanList.ItemBorderShow = true;
+            this.cMenu_GroupFanList.ItemHover = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.cMenu_GroupFanList.ItemPressed = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.cMenu_GroupFanList.ItemRadius = 4;
+            this.cMenu_GroupFanList.ItemRadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.cMenu_GroupFanList.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cMenu_AddTo});
+            this.cMenu_GroupFanList.ItemSplitter = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(148)))), ((int)(((byte)(212)))));
+            this.cMenu_GroupFanList.Name = "cMenu_GroupFanList";
+            this.cMenu_GroupFanList.RadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.cMenu_GroupFanList.Size = new System.Drawing.Size(153, 48);
+            this.cMenu_GroupFanList.SkinAllColor = true;
+            this.cMenu_GroupFanList.TitleAnamorphosis = true;
+            this.cMenu_GroupFanList.TitleColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(228)))), ((int)(((byte)(236)))));
+            this.cMenu_GroupFanList.TitleRadius = 4;
+            this.cMenu_GroupFanList.TitleRadiusStyle = CCWin.SkinClass.RoundStyle.All;
+            this.cMenu_GroupFanList.Opened += new System.EventHandler(this.cMenu_GroupFanList_Opened);
+            // 
+            // cMenu_AddTo
+            // 
+            this.cMenu_AddTo.Name = "cMenu_AddTo";
+            this.cMenu_AddTo.Size = new System.Drawing.Size(152, 22);
+            this.cMenu_AddTo.Text = "添加到分组...";
             // 
             // MainForm
             // 
@@ -809,6 +1266,12 @@
             this.StatusBar.PerformLayout();
             this.panel_group.ResumeLayout(false);
             this.panel_group.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_fanList_Group)).EndInit();
+            this.panel_toolbar.ResumeLayout(false);
+            this.panel_toolbar.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.num_alarmV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_interval)).EndInit();
+            this.cMenu_GroupFanList.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -866,7 +1329,33 @@
         private CCWin.SkinControl.SkinTreeView tree_devices;
         private CCWin.SkinControl.SkinButton btn_back;
         private CCWin.SkinControl.SkinButton btn_new_group;
-        private CCWin.SkinControl.SkinButton btn_edit_group;
+        private CCWin.SkinControl.SkinButton btn_del_group;
+        private CCWin.SkinControl.SkinLabel skinLabel3;
+        private CCWin.SkinControl.SkinTextBox lab_groupName;
+        private CCWin.SkinControl.SkinButton btn_gn_save;
+        private CCWin.SkinControl.SkinDataGridView dgv_fanList_Group;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private CCWin.SkinControl.SkinPanel panel_toolbar;
+        private CCWin.SkinControl.SkinButton btn_SetAlarmV;
+        private CCWin.SkinControl.SkinNumericUpDown num_alarmV;
+        private CCWin.SkinControl.SkinLabel skinLabel23;
+        private CCWin.SkinControl.SkinLabel skinLabel22;
+        private CCWin.SkinControl.SkinButton btn_ACClose;
+        private CCWin.SkinControl.SkinButton btn_ACOpen;
+        private CCWin.SkinControl.SkinNumericUpDown num_interval;
+        private CCWin.SkinControl.SkinLabel skinLabel21;
+        private CCWin.SkinControl.SkinLabel skinLabel20;
+        private CCWin.SkinControl.SkinLabel skinLabel18;
+        private CCWin.SkinControl.SkinLabel lab_previous;
+        private CCWin.SkinControl.SkinContextMenuStrip cMenu_GroupFanList;
+        private System.Windows.Forms.ToolStripMenuItem cMenu_AddTo;
     }
 }
 

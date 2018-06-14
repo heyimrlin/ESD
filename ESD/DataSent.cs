@@ -20,7 +20,7 @@ namespace ESD
             return Utils.HexstrToByte(data_sent);
         }
 
-        public static byte[] DeleteDevice(string gw_SN,string addr_Short,string addr_IEEE,string endpoint) //删除指定设备
+        public static byte[] DeleteDevice(string gw_SN,string addr_Short,string addr_IEEE,string endpoint)  //删除指定设备
         {
             string data_sent = "1500" + gw_SN.Substring(6, 2) + gw_SN.Substring(4, 2) + gw_SN.Substring(2, 2) + gw_SN.Substring(0, 2) + "FE950C02";
             data_sent += addr_Short + addr_IEEE + endpoint;

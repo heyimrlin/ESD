@@ -24,6 +24,7 @@ namespace ESD
         Thread Thread_Broadcast = null;
         public static TCPHandler handler = null;
         private Dictionary<string, Fan> FanList = new Dictionary<string, Fan>();
+        private Dictionary<string, Fan> GroupFanList = new Dictionary<string, Fan>();
 
         private XmlDocument document = new XmlDocument();
 
@@ -515,17 +516,42 @@ namespace ESD
             lab_Fans.Text = "" + dgv_fanList.RowCount;
         }
 
+        private void Refresh_FanList_Group(Dictionary<string,Fan> GroupList)    //刷新分组设备列表
+        {
+            dgv_fanList_Group.Rows.Clear();
+            Fan fan;
+
+            for (int i = 0; i < GroupList.Count; i++)
+            {
+                fan = GroupList.ElementAt(i).Value;
+
+                DataGridViewRow row = new DataGridViewRow();
+                int index = dgv_fanList_Group.Rows.Add(row);
+
+                dgv_fanList_Group.Rows[index].Cells[0].Value = fan.DeviceID;
+                dgv_fanList_Group.Rows[index].Cells[1].Value = fan.DeviceName;
+                dgv_fanList_Group.Rows[index].Cells[2].Value = fan.PressureState;
+                dgv_fanList_Group.Rows[index].Cells[3].Value = fan.FanState;
+                dgv_fanList_Group.Rows[index].Cells[4].Value = fan.BalanceVoltage;
+                dgv_fanList_Group.Rows[index].Cells[5].Value = fan.ShorAddress;
+                dgv_fanList_Group.Rows[index].Cells[6].Value = fan.IEEEAddress;
+                dgv_fanList_Group.Rows[index].Cells[7].Value = fan.EndPoint;
+            }
+        }
+
         private void cMenu_FanList_Opened(object sender, EventArgs e)   //弹出菜单初始化设置
         {
             if (dgv_fanList.RowCount > 0)
             {
                 cMenu_Delete.Enabled = true;
                 cMenu_Check.Enabled = true;
+                //cMenu_Group.Enabled = true;
             }
             else
             {
                 cMenu_Delete.Enabled = false;
                 cMenu_Check.Enabled = false;
+                //cMenu_Group.Enabled = false;
             }
         }
 
@@ -636,12 +662,256 @@ namespace ESD
                 root.Nodes.Add(newGroup);
             }
 
+            tree_devices.SelectedNode = root;
             tree_devices.ExpandAll();
         }
 
         private void btn_back_Click(object sender, EventArgs e) //分组操作——返回
         {
             dgv_fanList.BringToFront();
+        }
+
+        private void btn_gn_save_Click(object sender, EventArgs e)  //分组操作——保存分组名
+        {
+            if (lab_groupName.Text != lab_previous.Text)
+            {
+                XmlElement list = document.DocumentElement;
+                XmlNodeList groups = list.ChildNodes;
+                foreach (XmlElement group in groups)
+                {
+                    string name = group.GetAttribute("name");
+                    if (name.Equals(lab_previous.Text))
+                    {
+                        group.SetAttribute("name", lab_groupName.Text);
+                        lab_previous.Text = lab_groupName.Text;
+                    }
+                }
+
+                document.Save(Application.StartupPath + "\\DeviceName.xml");
+                Refresh_GroupList();
+            }
+        }
+
+        private void tree_devices_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            TreeNode current_node = tree_devices.SelectedNode;
+            this.GroupFanList.Clear();
+
+            int level = current_node.Level;
+            switch (level)
+            {
+                case 0:
+                    lab_groupName.Text = "所有设备";
+                    lab_groupName.Enabled = false;
+                    btn_gn_save.Enabled = false;
+                    btn_del_group.Enabled = false;
+                    this.GroupFanList = new Dictionary<string, Fan>(this.FanList);
+                    Refresh_FanList_Group(this.GroupFanList);
+                    break;
+                case 1:
+                    lab_groupName.Text = current_node.Text;
+                    lab_previous.Text = current_node.Text;
+                    if ("未分组".Equals(current_node.Text))
+                    {
+                        btn_gn_save.Enabled = false;
+                        lab_groupName.Enabled = false;
+                        btn_del_group.Enabled = false;
+                    }
+                    else
+                    {
+                        btn_gn_save.Enabled = true;
+                        lab_groupName.Enabled = true;
+                        btn_del_group.Enabled = true;
+                    }
+                    
+                    foreach (TreeNode child in current_node.Nodes)
+                    {
+                        CustomNode node = (CustomNode)child.Tag;
+                        string addr = node.Addr;
+                        Fan fan = new Fan();
+                        this.FanList.TryGetValue(addr, out fan);
+                        if (fan != null)
+                        {
+                            this.GroupFanList.Add(addr, fan);
+                        }
+                    }
+                    Refresh_FanList_Group(this.GroupFanList);
+
+                    break;
+                case 2:
+                    lab_groupName.Text = current_node.Parent.Text;
+                    lab_groupName.Enabled = false;
+                    btn_gn_save.Enabled = false;
+                    btn_del_group.Enabled = false;
+
+                    CustomNode node_spe = (CustomNode)current_node.Tag;
+                    string addr_spe = node_spe.Addr;
+                    Fan fan_spe = new Fan();
+                    this.FanList.TryGetValue(addr_spe, out fan_spe);
+                    if (fan_spe != null)
+                    {
+                        this.GroupFanList.Add(addr_spe, fan_spe);
+                    }
+                    Refresh_FanList_Group(this.GroupFanList);
+
+                    break;
+            }
+        }
+
+        private void btn_SetAlarmV_Click(object sender, EventArgs e)    //组操作——设置报警电压
+        {
+            if (handler != null && handler.isConnected())
+            {
+                foreach (Fan fan in this.GroupFanList.Values)
+                {
+                    string gw_SN = lab_SNID.Text;
+                    string addr_Short = fan.ShorAddress;
+                    string endpoint = fan.EndPoint;
+
+                    handler.SendData(DataSent.SetAlarmVoltage(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_alarmV.Value)));
+                }
+            }
+        }
+
+        private void btn_ACOpen_Click(object sender, EventArgs e)   //组操作——开启自动清洁
+        {
+            if (handler != null && handler.isConnected())
+            {
+                foreach (Fan fan in this.GroupFanList.Values)
+                {
+                    string gw_SN = lab_SNID.Text;
+                    string addr_Short = fan.ShorAddress;
+                    string endpoint = fan.EndPoint;
+
+                    handler.SendData(DataSent.SetAutoClean(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_interval.Value)));
+                }
+            }
+        }
+
+        private void btn_ACClose_Click(object sender, EventArgs e)  //组操作——关闭自动清洁
+        {
+            if (handler != null && handler.isConnected())
+            {
+                foreach (Fan fan in this.GroupFanList.Values)
+                {
+                    string gw_SN = lab_SNID.Text;
+                    string addr_Short = fan.ShorAddress;
+                    string endpoint = fan.EndPoint;
+
+                    handler.SendData(DataSent.SetAutoClean(gw_SN, addr_Short, endpoint, 0));
+                }
+            }
+        }
+
+        private void btn_new_group_Click(object sender, EventArgs e)    //新建分组
+        {
+            XmlElement list = document.DocumentElement;
+            XmlElement group = document.CreateElement("group");
+            group.SetAttribute("name", "未分组"+DateTime.Now.Millisecond);
+            list.AppendChild(group);
+            document.Save(Application.StartupPath + "\\DeviceName.xml");
+            Refresh_GroupList();
+        }
+
+        private void btn_del_group_Click(object sender, EventArgs e)    //删除分组
+        {
+            XmlElement list = document.DocumentElement;
+            XmlNodeList groups = list.ChildNodes;
+            XmlNode[] children = new XmlNode[]{};
+            foreach (XmlElement group in groups)
+            {
+                string name = group.GetAttribute("name");
+                if (name.Equals("未分组"))
+                {
+                    continue;
+                }
+                if (name.Equals(lab_groupName.Text))
+                {
+                    int length = group.ChildNodes.Count;
+                    children = new XmlElement[length];
+                    for (int i = 0; i < length; i++)
+                    {
+                        children[i] = group.ChildNodes[i];
+                    }
+                    list.RemoveChild(group);
+                }
+            }
+            foreach (XmlElement group in groups)
+            {
+                string name = group.GetAttribute("name");
+                if (name.Equals("未分组"))
+                {
+                    for (int i = 0; i < children.Length; i++)
+                    {
+                        group.AppendChild(children[i]);
+                    }
+                }
+            }
+            document.Save(Application.StartupPath + "\\DeviceName.xml");
+            Refresh_GroupList();
+        }
+
+        private void cMenu_GroupFanList_Opened(object sender, EventArgs e)
+        {
+            if (tree_devices.SelectedNode.Level == 2)
+            {
+                cMenu_AddTo.Enabled = true;
+                cMenu_AddTo.DropDownItems.Clear();
+
+                XmlElement list = document.DocumentElement;
+                XmlNodeList groups = list.ChildNodes;
+                foreach (XmlElement group in groups)
+                {
+                    string name = group.GetAttribute("name");
+                    ToolStripMenuItem item = new ToolStripMenuItem(name);
+                    item.Click += new EventHandler(MenuClicked);
+
+                    if (tree_devices.SelectedNode.Parent.Text == name)
+                    {
+                        item.Enabled = false;
+                    }
+
+                    cMenu_AddTo.DropDownItems.Add(item);
+                }
+            }
+            else
+            {
+                cMenu_AddTo.Enabled = false;
+            }
+        }
+
+        private void MenuClicked(Object sender, EventArgs e)
+        {
+            TreeNode current_node = tree_devices.SelectedNode;
+            CustomNode node = (CustomNode)current_node.Tag;
+            string addr = node.Addr;
+
+            XmlElement list = document.DocumentElement;
+            XmlNodeList groups = list.ChildNodes;
+            XmlElement child = null;
+            foreach (XmlElement group in groups)
+            {
+                foreach (XmlElement fan in group)
+                {
+                    if (fan.ChildNodes[0].InnerText == addr)
+                    {
+                        child = fan;
+                    }
+                }
+            }
+
+            ToolStripMenuItem item = (ToolStripMenuItem)sender;
+            foreach (XmlElement group in groups)
+            {
+                string name = group.GetAttribute("name");
+                if (name.Equals(item.Text))
+                {
+                    group.AppendChild(child);
+                }
+            }
+
+            document.Save(Application.StartupPath + "\\DeviceName.xml");
+            Refresh_GroupList();
         }
     }
 }
