@@ -245,24 +245,6 @@ namespace ESD
             string addr_short = tmp[0].ToString("X2") + tmp[1].ToString("X2");
             newFan.ShorAddress = addr_short;
 
-            //匹配已保存的设备名
-            XmlElement list = document.DocumentElement;
-            XmlNodeList group = list.ChildNodes;
-            bool flag = true;
-            foreach (XmlElement gp in group)
-            {
-                foreach (XmlNode fan in gp.ChildNodes)
-                {
-                    string addr = fan.FirstChild.InnerText;
-                    string name = fan.LastChild.InnerText;
-                    if (addr.Equals(addr_short))
-                    {
-                        newFan.DeviceName = name;
-                        flag = false;
-                    }
-                }
-            }
-
             //EndPoint
             tmp = data.Skip(4).Take(1).ToArray();
             //string endpoint = System.Text.Encoding.Default.GetString(tmp);
@@ -273,6 +255,7 @@ namespace ESD
             tmp = data.Skip(7).Take(2).ToArray();
             //string device_id = System.Text.Encoding.Default.GetString(tmp);
             string device_id = tmp[1].ToString("X2") + tmp[0].ToString("X2");
+            device_id = "未获取";
             newFan.DeviceID = device_id;
 
             //8字节IEEE地址
@@ -281,6 +264,26 @@ namespace ESD
             string addr_ieee = tmp[0].ToString("X2") + tmp[1].ToString("X2") + tmp[2].ToString("X2") + tmp[3].ToString("X2") +
                 tmp[4].ToString("X2") + tmp[5].ToString("X2") + tmp[6].ToString("X2") + tmp[7].ToString("X2");
             newFan.IEEEAddress = addr_ieee;
+
+            //匹配已保存的设备名
+            XmlElement list = document.DocumentElement;
+            XmlNodeList group = list.ChildNodes;
+            bool flag = true;
+            foreach (XmlElement gp in group)
+            {
+                foreach (XmlNode fan in gp.ChildNodes)
+                {
+                    string addr = fan.FirstChild.InnerText;
+                    string devid = fan.ChildNodes[1].InnerText;
+                    string name = fan.LastChild.InnerText;
+                    if (addr.Equals(addr_short))
+                    {
+                        newFan.DeviceName = name;
+                        newFan.DeviceID = devid;
+                        flag = false;
+                    }
+                }
+            }
 
             //若未在数据库中保存过设备，则添加
             if (flag)
@@ -398,6 +401,8 @@ namespace ESD
                 //报警电压
                 string alarm_voltage = "" + data_real[16];
 
+                Update_XmlDataBase(addr_short, device_id);
+
                 if (FanList.Keys.Contains<string>(addr_short)==true)
                 {
                     Fan fan = new Fan();
@@ -437,6 +442,8 @@ namespace ESD
                 string fan_error = (data[17] & 8) == 8 ? "异常" : "正常";
                 string device_id = data[19].ToString("X2") + data[20].ToString("X2");
 
+                Update_XmlDataBase(addr_short, device_id);
+
                 if (FanList.Keys.Contains(addr_short))
                 {
                     Fan fan = new Fan();
@@ -470,6 +477,66 @@ namespace ESD
             }
 
             TCPHandler.State = "更新设备状态成功！";
+        }
+
+        private void Update_XmlDataBase(string addr_short, string device_id)    //根据短地址和设备ID更新本地数据库
+        {
+            //查找device_id，若存在，则更新对应的短地址；
+            XmlElement list = document.DocumentElement;
+            XmlNodeList groups = list.ChildNodes;
+            bool flag = true;
+            foreach (XmlElement group in groups)
+            {
+                foreach (XmlElement fan in group)
+                {
+                    string dev_id = fan.ChildNodes[1].InnerText;
+                    if (device_id.Equals(dev_id))
+                    {
+                        fan.FirstChild.InnerText = addr_short;
+                        flag = false;
+                    }
+                }
+            }
+            //若device_id不存在，则查找addr_short，若addr_short存在，则将addr_short对应的设备ID更新为device_id
+            if (flag)
+            {
+                foreach (XmlElement group in groups)
+                {
+                    foreach (XmlElement fan in group)
+                    {
+                        string shortaddr = fan.FirstChild.InnerText;
+                        if (addr_short.Equals(shortaddr))
+                        {
+                            fan.ChildNodes[1].InnerText = device_id;
+                            flag = false;
+                        }
+                    }
+                }
+            }
+            //若addr_short不存在，则创建新的设备信息
+            if (flag)
+            {
+                foreach (XmlElement group in groups)
+                {
+                    if (group.GetAttribute("name").Equals("未分组"))
+                    {
+                        XmlElement fan = document.CreateElement("fan");
+                        XmlElement addr = document.CreateElement("addr");
+                        addr.InnerText = addr_short;
+                        XmlElement devid = document.CreateElement("deviceid");
+                        devid.InnerText = device_id;
+                        XmlElement name = document.CreateElement("name");
+                        name.InnerText = "新风机设备";
+
+                        fan.AppendChild(addr);
+                        fan.AppendChild(devid);
+                        fan.AppendChild(name);
+
+                        group.AppendChild(fan);
+                    }
+                }
+            }
+            document.Save(Application.StartupPath + "\\DeviceName.xml");
         }
 
         private void btn_netPermit_Click(object sender, EventArgs e)    //允许入网
@@ -545,13 +612,13 @@ namespace ESD
             {
                 cMenu_Delete.Enabled = true;
                 cMenu_Check.Enabled = true;
-                //cMenu_Group.Enabled = true;
+                cMenu_Group.Enabled = true;
             }
             else
             {
                 cMenu_Delete.Enabled = false;
                 cMenu_Check.Enabled = false;
-                //cMenu_Group.Enabled = false;
+                cMenu_Group.Enabled = false;
             }
         }
 
@@ -571,9 +638,28 @@ namespace ESD
                 {
                     handler.SendData(DataSent.DeleteDevice(lab_SNID.Text,addr_Short,addr_IEEE,endpoint));
                     FanList.Remove(addr_Short);
+                    DeleteElementFromDocument(addr_Short);
                     Refresh_FanList();
                 }
             }
+        }
+
+        private void DeleteElementFromDocument(string addr) //根据短地址从数据库中删除设备信息
+        {
+            XmlElement list = document.DocumentElement;
+            XmlNodeList groups = list.ChildNodes;
+            foreach (XmlElement group in groups)
+            {
+                foreach (XmlElement fan in group.ChildNodes)
+                {
+                    string fan_addr = fan.FirstChild.InnerText;
+                    if (fan_addr.Equals(addr))
+                    {
+                        group.RemoveChild(fan);
+                    }
+                }
+            }
+            document.Save(Application.StartupPath + "\\DeviceName.xml");
         }
 
         private void cMenu_Check_Click(object sender, EventArgs e)  //查看设备状态
@@ -630,6 +716,7 @@ namespace ESD
         {
             panel_group.BringToFront();
             Refresh_GroupList();
+            panel_gw_toolbar.Enabled = false;
         }
 
         private void Refresh_GroupList()    //刷新分组列表
@@ -669,6 +756,7 @@ namespace ESD
         private void btn_back_Click(object sender, EventArgs e) //分组操作——返回
         {
             dgv_fanList.BringToFront();
+            panel_gw_toolbar.Enabled = true;
         }
 
         private void btn_gn_save_Click(object sender, EventArgs e)  //分组操作——保存分组名
@@ -769,6 +857,7 @@ namespace ESD
                     string endpoint = fan.EndPoint;
 
                     handler.SendData(DataSent.SetAlarmVoltage(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_alarmV.Value)));
+                    Thread.Sleep(100);
                 }
             }
         }
@@ -784,6 +873,7 @@ namespace ESD
                     string endpoint = fan.EndPoint;
 
                     handler.SendData(DataSent.SetAutoClean(gw_SN, addr_Short, endpoint, Decimal.ToInt32(num_interval.Value)));
+                    Thread.Sleep(100);
                 }
             }
         }
@@ -799,6 +889,7 @@ namespace ESD
                     string endpoint = fan.EndPoint;
 
                     handler.SendData(DataSent.SetAutoClean(gw_SN, addr_Short, endpoint, 0));
+                    Thread.Sleep(100);
                 }
             }
         }
@@ -851,7 +942,7 @@ namespace ESD
             Refresh_GroupList();
         }
 
-        private void cMenu_GroupFanList_Opened(object sender, EventArgs e)
+        private void cMenu_GroupFanList_Opened(object sender, EventArgs e)  //分组操作——初始化右键菜单
         {
             if (tree_devices.SelectedNode.Level == 2)
             {
@@ -864,7 +955,7 @@ namespace ESD
                 {
                     string name = group.GetAttribute("name");
                     ToolStripMenuItem item = new ToolStripMenuItem(name);
-                    item.Click += new EventHandler(MenuClicked);
+                    item.Click += new EventHandler(MenuClicked);    //为菜单项添加点击事件
 
                     if (tree_devices.SelectedNode.Parent.Text == name)
                     {
@@ -880,7 +971,7 @@ namespace ESD
             }
         }
 
-        private void MenuClicked(Object sender, EventArgs e)
+        private void MenuClicked(Object sender, EventArgs e)    //分组操作——右键菜单点击事件
         {
             TreeNode current_node = tree_devices.SelectedNode;
             CustomNode node = (CustomNode)current_node.Tag;

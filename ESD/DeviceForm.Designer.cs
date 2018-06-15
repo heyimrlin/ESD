@@ -44,6 +44,12 @@
             this.btn_manual = new CCWin.SkinControl.SkinRadioButton();
             this.skinLabel6 = new CCWin.SkinControl.SkinLabel();
             this.skinCaptionPanel2 = new CCWin.SkinControl.SkinCaptionPanel();
+            this.skinLabel26 = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel24 = new CCWin.SkinControl.SkinLabel();
+            this.lab_alarmvoltage = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel27 = new CCWin.SkinControl.SkinLabel();
+            this.lab_interval = new CCWin.SkinControl.SkinLabel();
+            this.skinLabel25 = new CCWin.SkinControl.SkinLabel();
             this.btn_save = new CCWin.SkinControl.SkinButton();
             this.lab_devName = new CCWin.SkinControl.SkinTextBox();
             this.lab_speed = new CCWin.SkinControl.SkinLabel();
@@ -97,12 +103,6 @@
             this.num_speed = new CCWin.SkinControl.SkinNumericUpDown();
             this.skinLabel9 = new CCWin.SkinControl.SkinLabel();
             this.Timer_Refresh = new System.Windows.Forms.Timer(this.components);
-            this.lab_interval = new CCWin.SkinControl.SkinLabel();
-            this.skinLabel25 = new CCWin.SkinControl.SkinLabel();
-            this.lab_alarmvoltage = new CCWin.SkinControl.SkinLabel();
-            this.skinLabel27 = new CCWin.SkinControl.SkinLabel();
-            this.skinLabel24 = new CCWin.SkinControl.SkinLabel();
-            this.skinLabel26 = new CCWin.SkinControl.SkinLabel();
             this.skinCaptionPanel1.SuspendLayout();
             this.skinPanel3.SuspendLayout();
             this.skinPanel2.SuspendLayout();
@@ -295,7 +295,7 @@
             this.btn_auto.SelectedNormlBack = null;
             this.btn_auto.Size = new System.Drawing.Size(55, 24);
             this.btn_auto.TabIndex = 3;
-            this.btn_auto.Text = "自动";
+            this.btn_auto.Text = "锁定";
             this.btn_auto.UseVisualStyleBackColor = false;
             // 
             // btn_manual
@@ -314,7 +314,7 @@
             this.btn_manual.SelectedNormlBack = null;
             this.btn_manual.Size = new System.Drawing.Size(49, 24);
             this.btn_manual.TabIndex = 2;
-            this.btn_manual.Text = "手动";
+            this.btn_manual.Text = "解锁";
             this.btn_manual.UseVisualStyleBackColor = false;
             // 
             // skinLabel6
@@ -360,6 +360,84 @@
             this.skinCaptionPanel2.Size = new System.Drawing.Size(359, 315);
             this.skinCaptionPanel2.TabIndex = 16;
             this.skinCaptionPanel2.Text = "基本信息";
+            // 
+            // skinLabel26
+            // 
+            this.skinLabel26.AutoSize = true;
+            this.skinLabel26.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel26.BorderColor = System.Drawing.Color.White;
+            this.skinLabel26.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel26.Location = new System.Drawing.Point(263, 268);
+            this.skinLabel26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel26.Name = "skinLabel26";
+            this.skinLabel26.Size = new System.Drawing.Size(37, 25);
+            this.skinLabel26.TabIndex = 45;
+            this.skinLabel26.Text = "(V)";
+            // 
+            // skinLabel24
+            // 
+            this.skinLabel24.AutoSize = true;
+            this.skinLabel24.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel24.BorderColor = System.Drawing.Color.White;
+            this.skinLabel24.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel24.Location = new System.Drawing.Point(197, 234);
+            this.skinLabel24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel24.Name = "skinLabel24";
+            this.skinLabel24.Size = new System.Drawing.Size(62, 25);
+            this.skinLabel24.TabIndex = 44;
+            this.skinLabel24.Text = "(小时)";
+            // 
+            // lab_alarmvoltage
+            // 
+            this.lab_alarmvoltage.AutoSize = true;
+            this.lab_alarmvoltage.BackColor = System.Drawing.Color.Transparent;
+            this.lab_alarmvoltage.BorderColor = System.Drawing.Color.White;
+            this.lab_alarmvoltage.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_alarmvoltage.Location = new System.Drawing.Point(166, 268);
+            this.lab_alarmvoltage.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lab_alarmvoltage.Name = "lab_alarmvoltage";
+            this.lab_alarmvoltage.Size = new System.Drawing.Size(89, 25);
+            this.lab_alarmvoltage.TabIndex = 43;
+            this.lab_alarmvoltage.Text = "9999999";
+            // 
+            // skinLabel27
+            // 
+            this.skinLabel27.AutoSize = true;
+            this.skinLabel27.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel27.BorderColor = System.Drawing.Color.White;
+            this.skinLabel27.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel27.Location = new System.Drawing.Point(47, 268);
+            this.skinLabel27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel27.Name = "skinLabel27";
+            this.skinLabel27.Size = new System.Drawing.Size(107, 25);
+            this.skinLabel27.TabIndex = 42;
+            this.skinLabel27.Text = "报警电压：";
+            // 
+            // lab_interval
+            // 
+            this.lab_interval.AutoSize = true;
+            this.lab_interval.BackColor = System.Drawing.Color.Transparent;
+            this.lab_interval.BorderColor = System.Drawing.Color.White;
+            this.lab_interval.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lab_interval.Location = new System.Drawing.Point(166, 234);
+            this.lab_interval.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lab_interval.Name = "lab_interval";
+            this.lab_interval.Size = new System.Drawing.Size(34, 25);
+            this.lab_interval.TabIndex = 41;
+            this.lab_interval.Text = "24";
+            // 
+            // skinLabel25
+            // 
+            this.skinLabel25.AutoSize = true;
+            this.skinLabel25.BackColor = System.Drawing.Color.Transparent;
+            this.skinLabel25.BorderColor = System.Drawing.Color.White;
+            this.skinLabel25.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.skinLabel25.Location = new System.Drawing.Point(9, 234);
+            this.skinLabel25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.skinLabel25.Name = "skinLabel25";
+            this.skinLabel25.Size = new System.Drawing.Size(145, 25);
+            this.skinLabel25.TabIndex = 40;
+            this.skinLabel25.Text = "自动清洁周期：";
             // 
             // btn_save
             // 
@@ -1194,84 +1272,6 @@
             this.Timer_Refresh.Enabled = true;
             this.Timer_Refresh.Interval = 1000;
             this.Timer_Refresh.Tick += new System.EventHandler(this.Timer_Refresh_Tick);
-            // 
-            // lab_interval
-            // 
-            this.lab_interval.AutoSize = true;
-            this.lab_interval.BackColor = System.Drawing.Color.Transparent;
-            this.lab_interval.BorderColor = System.Drawing.Color.White;
-            this.lab_interval.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_interval.Location = new System.Drawing.Point(166, 234);
-            this.lab_interval.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lab_interval.Name = "lab_interval";
-            this.lab_interval.Size = new System.Drawing.Size(34, 25);
-            this.lab_interval.TabIndex = 41;
-            this.lab_interval.Text = "24";
-            // 
-            // skinLabel25
-            // 
-            this.skinLabel25.AutoSize = true;
-            this.skinLabel25.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel25.BorderColor = System.Drawing.Color.White;
-            this.skinLabel25.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel25.Location = new System.Drawing.Point(9, 234);
-            this.skinLabel25.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.skinLabel25.Name = "skinLabel25";
-            this.skinLabel25.Size = new System.Drawing.Size(145, 25);
-            this.skinLabel25.TabIndex = 40;
-            this.skinLabel25.Text = "自动清洁周期：";
-            // 
-            // lab_alarmvoltage
-            // 
-            this.lab_alarmvoltage.AutoSize = true;
-            this.lab_alarmvoltage.BackColor = System.Drawing.Color.Transparent;
-            this.lab_alarmvoltage.BorderColor = System.Drawing.Color.White;
-            this.lab_alarmvoltage.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_alarmvoltage.Location = new System.Drawing.Point(166, 268);
-            this.lab_alarmvoltage.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.lab_alarmvoltage.Name = "lab_alarmvoltage";
-            this.lab_alarmvoltage.Size = new System.Drawing.Size(89, 25);
-            this.lab_alarmvoltage.TabIndex = 43;
-            this.lab_alarmvoltage.Text = "9999999";
-            // 
-            // skinLabel27
-            // 
-            this.skinLabel27.AutoSize = true;
-            this.skinLabel27.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel27.BorderColor = System.Drawing.Color.White;
-            this.skinLabel27.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel27.Location = new System.Drawing.Point(47, 268);
-            this.skinLabel27.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.skinLabel27.Name = "skinLabel27";
-            this.skinLabel27.Size = new System.Drawing.Size(107, 25);
-            this.skinLabel27.TabIndex = 42;
-            this.skinLabel27.Text = "报警电压：";
-            // 
-            // skinLabel24
-            // 
-            this.skinLabel24.AutoSize = true;
-            this.skinLabel24.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel24.BorderColor = System.Drawing.Color.White;
-            this.skinLabel24.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel24.Location = new System.Drawing.Point(197, 234);
-            this.skinLabel24.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.skinLabel24.Name = "skinLabel24";
-            this.skinLabel24.Size = new System.Drawing.Size(62, 25);
-            this.skinLabel24.TabIndex = 44;
-            this.skinLabel24.Text = "(小时)";
-            // 
-            // skinLabel26
-            // 
-            this.skinLabel26.AutoSize = true;
-            this.skinLabel26.BackColor = System.Drawing.Color.Transparent;
-            this.skinLabel26.BorderColor = System.Drawing.Color.White;
-            this.skinLabel26.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.skinLabel26.Location = new System.Drawing.Point(263, 268);
-            this.skinLabel26.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.skinLabel26.Name = "skinLabel26";
-            this.skinLabel26.Size = new System.Drawing.Size(37, 25);
-            this.skinLabel26.TabIndex = 45;
-            this.skinLabel26.Text = "(V)";
             // 
             // DeviceForm
             // 

@@ -20,4 +20,3 @@ D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.Properties.Reso
 D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.csproj.GenerateResource.Cache
 D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.exe
 D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.pdb
-D:\Documents\Visual Studio 2013\Projects\ESD\ESD\obj\Release\ESD.csprojResolveAssemblyReference.cache
