@@ -479,7 +479,12 @@ namespace ESD
             TCPHandler.State = "更新设备状态成功！";
         }
 
-        private void Update_XmlDataBase(string addr_short, string device_id)    //根据短地址和设备ID更新本地数据库
+        /// <summary>
+        /// 根据短地址和设备ID更新本地数据库
+        /// </summary>
+        /// <param name="addr_short">短地址</param>
+        /// <param name="device_id">设备ID</param>
+        private void Update_XmlDataBase(string addr_short, string device_id)
         {
             //查找device_id，若存在，则更新对应的短地址；
             XmlElement list = document.DocumentElement;

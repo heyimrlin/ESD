@@ -64,7 +64,7 @@ namespace ESD
                     //处理广播接收数据，获取在线网关的ip地址
                     if (recData.Contains("SN"))
                     {
-                        byte[] tmp = buf.Skip(buf.Length - 8).Take(8).ToArray();
+                        byte[] tmp = buf.Skip(buf.Length - 10).Take(8).ToArray();
                         string snid = System.Text.Encoding.Default.GetString(tmp);
                         if (!gw_info.Keys.Contains(snid))
                         {
